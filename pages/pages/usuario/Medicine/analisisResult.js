@@ -5,11 +5,11 @@ import axios from "axios";
 import { Tag } from 'primereact/tag';
 import { Dialog } from 'primereact/dialog';
 import { Image } from 'primereact/image';
-import { InputText } from 'primereact/inputtext';
+import { DataTable, DataTableExpandedRows, DataTableFilterMeta } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
 import { Divider } from 'primereact/divider';
 import { Messages } from 'primereact/messages';
 import { Menu } from 'primereact/menu';
@@ -19,6 +19,84 @@ import { Menu } from 'primereact/menu';
 
 
 const analisisResult = () => {
+
+  const [datosUsuario, setDatosUsuario] = useState({
+    Glucosa: '',
+    Urea: '',
+    Creatinina: '',
+    'Ácido Úrico': '',
+    'Colesterol Total': '',
+    'Colesterol Ldl': '',
+    'Colesterol Hdl': '',
+    Trigliceridos: '',
+    'Bilirrubina Total': '',
+    'TGO (Transaminasa Glutámico Oxalacética)': '',
+    'TGP (Transaminasa Glutámico Pirúvica)': '',
+    'GGT (Gamma-Glutamil Transferasa)': '',
+  });
+
+  const parametrosRecomendados = {
+    Glucosa: '70 - 100 mg/dL',
+    Urea: '10 - 50 mg/dL',
+    Creatinina: '0.6 - 1.2 mg/dL',
+    'Ácido Úrico': '2.4 - 6.0 mg/dL',
+    'Colesterol Total': '125 - 200 mg/dL',
+    'Colesterol Ldl': '70 - 130 mg/dL',
+    'Colesterol Hdl': '40 - 60 mg/dL',
+    Trigliceridos: '50 - 150 mg/dL',
+    'Bilirrubina Total': '0.1 - 1.2 mg/dL',
+    'TGO (Transaminasa Glutámico Oxalacética)': '8 - 40 U/L',
+    'TGP (Transaminasa Glutámico Pirúvica)': '7 - 56 U/L',
+    'GGT (Gamma-Glutamil Transferasa)': '8 - 38 U/L',
+  };
+
+  const compararConParametros = (analito, valor) => {
+    const [min, max] = parametrosRecomendados[analito].split(' - ');
+    if (valor < parseFloat(min)) {
+      return 'Por debajo';
+    } else if (valor > parseFloat(max)) {
+      return 'Por arriba';
+    } else {
+      return 'Normal';
+    }
+  };
+
+  const obtenerEstiloTexto = (comparacion) => {
+    switch (comparacion) {
+      case 'Por debajo':
+        return { color: 'red' };
+      case 'Por arriba':
+        return { color: 'red' };
+      default:
+        return { color: 'blue' };
+    }
+  };
+
+  
+  const rows = Object.keys(parametrosRecomendados).map(analito => ({
+    analito,
+    parametros: parametrosRecomendados[analito],
+    valor: datosUsuario[analito] || '',
+    comparacion: compararConParametros(analito, datosUsuario[analito]),
+  }));
+
+  const recomendaciones = {
+    Glucosa: {
+      PorDebajo: 'Recomendación para Glucosa por debajo',
+      PorArriba: 'Recomendación para Glucosa por arriba',
+    },
+    Urea: {
+      PorDebajo: 'Recomendación para Urea por debajo',
+      PorArriba: 'Recomendación para Urea por arriba',
+    },
+    // Agrega el resto de analitos y sus recomendaciones
+  };
+
+  const obtenerRecomendacion = (analito, comparacion) => {
+    return recomendaciones[analito][comparacion];
+  };
+  
+
   const [formValues, setFormValues] = useState({
     glucosa: '',
     urea: '',
@@ -68,158 +146,24 @@ const analisisResult = () => {
   //----------------| Valor que regresará |----------------
   return (
     <Layout title="Interpretación de Análisis" description="Interpreta los análisis clínicos sanguíneos de los pacientes">
+
       <div className="grid">
-        <div className="col-12">
-          <div className="card">
-            <div className="grid">
-              <div className="col-12">
+      <div className="col-12">
                 <div className="card">
-                  <h2>Formulario de Análisis Clínicos</h2>
-                  <div className="grid">
-                    <div className="col-5 flex align-items-center justify-content-center">
-                    <div className="col-5 flex align-items-left justify-content-left">
-                              <div className="p-fluid">
-                                <br />
-                                <label htmlFor="glucosa" className="block text-900 text-md font-medium mb-2"> Glucosa:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="urea" className="block text-900 text-md font-medium mb-2"> Urea: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="creatinina" className="block text-900 text-md font-medium mb-2"> Creatinina:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="acidoUrico" className="block text-900 text-md font-medium mb-2"> Ácido Úrico:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="colesterolTotal" className="block text-900 text-md font-medium mb-2"> Colesterol Total: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="colesterolLdl" className="block text-900 text-md font-medium mb-2"> Colesterol Ldl:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="colesterolHdl" className="block text-900 text-md font-medium mb-2"> Colesterol Hdl: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="trigliceridos" className="block text-900 text-md font-medium mb-2"> Trigliceridos: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="bilirrubina" className="block text-900 text-md font-medium mb-2"> Bilirrubina: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="tgo" className="block text-900 text-md font-medium mb-2"> TGO: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="tgp" className="block text-900 text-md font-medium mb-2"> TGP: </label>
-                                <br />
-                                <label htmlFor="ggt" className="block text-900 text-md font-medium mb-2"> GGT: </label>
-                              </div>
-                            </div>
-                    </div>
-                    <div className="col-12">
-                      <Divider layout="vertical" ></Divider>
-                    </div>
-                    <div className="col-5 align-items-center justify-content-center">
-
-                    <div className="p-fluid">
-                                <br />
-                                <label htmlFor="glucosa" className="block text-900 text-md font-medium mb-2"> Glucosa:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="urea" className="block text-900 text-md font-medium mb-2"> Urea: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="creatinina" className="block text-900 text-md font-medium mb-2"> Creatinina:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="acidoUrico" className="block text-900 text-md font-medium mb-2"> Ácido Úrico:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="colesterolTotal" className="block text-900 text-md font-medium mb-2"> Colesterol Total: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="colesterolLdl" className="block text-900 text-md font-medium mb-2"> Colesterol Ldl:</label>
-                                <br />
-                                <br />
-                                <label htmlFor="colesterolHdl" className="block text-900 text-md font-medium mb-2"> Colesterol Hdl: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="trigliceridos" className="block text-900 text-md font-medium mb-2"> Trigliceridos: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="bilirrubina" className="block text-900 text-md font-medium mb-2"> Bilirrubina: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="tgo" className="block text-900 text-md font-medium mb-2"> TGO: </label>
-                                <br />
-                                <br />
-                                <label htmlFor="tgp" className="block text-900 text-md font-medium mb-2"> TGP: </label>
-                                <br />
-                                <label htmlFor="ggt" className="block text-900 text-md font-medium mb-2"> GGT: </label>
-                              </div>
-
-
-
-                      <div className="col-12">
-                        <div className="card">
-                          <h5>Parámetros Recomendados</h5>
-                          <br />
-                          <div className="grid">
-                            <div className="col-5 flex align-items-right justify-content-right">
-                              <div className="p-fluid">
-                                <br />
-                                <label htmlFor="Rglucosa" className="block text-900 text-md font-medium mb-2"> 10 - 20</label>
-                                <br />
-                                <br />
-                                <label htmlFor="Rurea" className="block text-900 text-md font-medium mb-2"> +16 </label>
-                                <br />
-                                <br />
-                                <label htmlFor="Rcreatinina" className="block text-900 text-md font-medium mb-2"> 0.50 - 1.00</label>
-                                <br />
-                                <br />
-                                <label htmlFor="RacidoUrico" className="block text-900 text-md font-medium mb-2"> 2.5 - 6.2</label>
-                                <br />
-                                <br />
-                                <label htmlFor="RcolesterolTotal" className="block text-900 text-md font-medium mb-2"> 97 - 237 </label>
-                                <br />
-                                <br />
-                                <label htmlFor="RcolesterolLdl" className="block text-900 text-md font-medium mb-2"> 20 - 100</label>
-                                <br />
-                                <br />
-                                <label htmlFor="RcolesterolHdl" className="block text-900 text-md font-medium mb-2"> 40.00 - 60.00 </label>
-                                <br />
-                                <br />
-                                <label htmlFor="Rtrigliceridos" className="block text-900 text-md font-medium mb-2"> 30 - 150 </label>
-                                <br />
-                                <br />
-                                <label htmlFor="RbilirrubinaTotal" className="block text-900 text-md font-medium mb-2"> 0.00 - 1.00 </label>
-                                <br />
-                                <br />
-                                <label htmlFor="Rtgo" className="block text-900 text-md font-medium mb-2"> 5 - 34 </label>
-                                <br />
-                                <br />
-                                <label htmlFor="Rtgp" className="block text-900 text-md font-medium mb-2"> 0 - 55 </label>
-                                <br />
-                                <label htmlFor="Rggt" className="block text-900 text-md font-medium mb-2"> 12 - 64 </label>
-                              </div>
-                            </div>
-                            <div className="col-1">
-                              <Divider layout="vertical"></Divider>
-                            </div>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <h3>Interpretación de los Análisis</h3>
+                    <DataTable value={rows} className="mt-3">
+                       <Column field="analito" header="Analito" />
+                       <Column field="parametros" header="Parámetros Recomendados" />
+                       <Column field="valor" header="Datos del Usuario" body={(rowData) => (
+                       <input  type="text"  value={rowData.valor} onChange={(e) => {const newValue = e.target.value;
+                        setDatosUsuario((prevDatos) => ({ ...prevDatos, [rowData.analito]: newValue }));
+                         }} 
+                         style={obtenerEstiloTexto(rowData.comparacion)} />
+                       )} />
+                       <Column field="comparacion" header="Comparación con Parámetros" />
+                     </DataTable>
                 </div>
-                <div className="flex align-items-center justify-content-center">
-                  <Button label="Interpretar Otros Análisis" onChange={handleSubmit} />
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
       </div>
     </Layout>
   );
