@@ -96,9 +96,9 @@ const AppConfig = (props) => {
         <div className="grid">         
           <div className="col-3">
             <button
-              className="p-link w-2rem h-2rem" style={{ backgroundColor: '#B6EC8F', height: '200px' }}
-              onClick={() => changeTheme('light-green', 'light')}>
-                   <img src="  https://png.pngtree.com/png-vector/20230407/ourmid/pngtree-flower-line-icon-vector-png-image_6680008.png" className="w-2rem h-2rem"  />
+              className="p-link w-2rem h-2rem" style={{ backgroundColor: '#08605F', height: '200px' }}
+              onClick={() => changeTheme('light-green', 'light')}>  
+                   <img src="  https://static.vecteezy.com/system/resources/previews/016/637/809/original/heart-shaped-stethoscope-png.png" className="w-2rem h-2rem"  />
               </button>
           </div>
           <div className="col-3">
