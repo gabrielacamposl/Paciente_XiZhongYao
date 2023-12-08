@@ -67,14 +67,11 @@ const AnalisisClinicos = () => {
   //----------------| Valor que regresará |----------------
   return (
     <Layout title="Interpretación de Análisis" description="Interpreta los análisis clínicos sanguíneos de los pacientes">
-      <div className="grid">
-        <div className="col-12">
-          <div className="card">
+      
             <div className="grid">
-              <div className="col-12"></div>
               <div className="col-12">
                 <div className="card">
-                  <h2>Formulario de Análisis Clínicos</h2>
+                  <h2>Interpretación de Análisis Clínicos</h2>
                   <div className="grid">
                     <div className="col-5 flex align-items-center justify-content-center">
                       <div className="col-12 text-center">      
@@ -185,9 +182,8 @@ const AnalisisClinicos = () => {
                 )}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+      
+     
     </Layout>
   );
 };

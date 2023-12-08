@@ -17,7 +17,7 @@ import { Image } from 'cloudinary-react'
 
 const doctores = () => {
   //----------------| Lista de variables |----------------
-  const [doc, setDoc] = useEstate();
+  const [doc, setDoc] = useState();
   const [docInfo, setDocInfo] = useState({
     username: '',
     especialidad: '',
@@ -28,61 +28,89 @@ const doctores = () => {
     profileDoc: [],
   });
 
+ 
+
   //----------------| Valor que regresara |----------------
   return (
-    <Layout title="Nuestros Profesionales"
-      description="Acceso al listado de los médicos disponibles" >
-      <div className="grid">
-        <div className="col-12">
-          <div className="card">
+    <Layout title="Nuestros Profesionales"  description="Acceso al listado de los médicos disponibles" >
 
-          <div className="col-12">
-        <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-          <Image
-            cloudName="dp6uo7fsz" publicId={flor.imagenProducto[0]}
-            className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
-            style={{ width: '200px', height: '200px' }}
-          />
-          <div
-            className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4"
-          >
-            <div className="flex flex-column align-items-center sm:align-items-start gap-3">
-              <div className="text-2xl font-bold text-900">{doc.username}</div>
-              <div className="flex align-items-center gap-3">
-                <Tag value={flor.statusProducto} severity={getSeverity(flor)}></Tag>
-                <span className="flex align-items-center gap-2">
-                  <i className="pi pi-tag"></i>
-                  <span className="font-semibold">{doc.especialidad}</span>
-                </span>
+      <div className="grid">
+         <div className="col-12">
+            <div className="card">
+            <div className="block-content">
+        <div className="px-4 py-8 md:px-6 lg:px-8 surface-ground">
+          <div className="grid grid-nogutter">
+            <div className="col-12 md:col-8 xl:col-6 p-3">
+              <div className="surface-card shadow-2 border-round p-4">
+                <div className="flex border-bottom-1 surface-border pb-4">
+                  <img src="https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2023/08/02/2986392.jpg" 
+                  className="mr-3" alt="1"  style={{ width: '70px', height: '70px' }}/>
+                  <div className="flex flex-column align-items-start">
+                    <span className="text-xl text-900 font-medium mb-1"> Dr. Gonzalez</span>
+                    <span className="text-600 font-medium mb-2"> Gastroenterólogo</span>
+                    <span className="bg-blue-50 text-blue-400 border-round inline-flex py-1 px-2 text-sm">Médico</span>
+                  </div>
+                </div>
+                <div className="flex justify-content-between pt-4">
+                  <Button> Agendar Cita</Button>
+                </div>
               </div>
             </div>
-
-            <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2 mt-6">
-              <Button
-                label="Favoritos"
-                icon={"pi pi-heart"}
-                rounded
-                severity="help"
-                aria-label="Favorite"
-                className="p-button-rounded"
-                // onClick={() => toggleFavorito(flor)}
-                onClick={() => AgregarFavorito(flor)}
-              />
-              <Button label="Agregar" icon="pi pi-shopping-cart" className="font-light ml-2 " severity="success" disabled={flor.estatusProducto === 'Agotado'} onClick={() => { AgregarCarrito(flor) }} />
-              <Toast ref={toast} />
-              <Button label="Detalles" icon="pi pi-external-link" className="p-button-rounded"
-                onClick={() => dialogoFlor(flor)} />
+            <div className="col-12 md:col-8 xl:col-6 p-3">
+              <div className="surface-card shadow-2 border-round p-4">
+                <div className="flex border-bottom-1 surface-border pb-4">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/220624_%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8_%EB%B7%94%281%29.jpg/220px-220624_%EB%B0%A9%ED%83%84%EC%86%8C%EB%85%84%EB%8B%A8_%EB%B7%94%281%29.jpg" 
+                  className="mr-3" alt="1"  style={{ width: '70px', height: '70px' }}/>
+                  <div className="flex flex-column align-items-start">
+                    <span className="text-xl text-900 font-medium mb-1"> Dr. Gonzalez</span>
+                    <span className="text-600 font-medium mb-2"> Gastroenterólogo</span>
+                    <span className="bg-green-50 text-green-400 border-round inline-flex py-1 px-2 text-sm">Médico</span>
+                  </div>
+                </div>
+                <div className="flex justify-content-between pt-4">
+                  <Button> Agendar Cita</Button>
+                </div>
+              </div>
             </div>
-
+            <div className="col-12 md:col-8 xl:col-6 p-3">
+              <div className="surface-card shadow-2 border-round p-4">
+                <div className="flex border-bottom-1 surface-border pb-4">
+                  <img src="https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2023/08/02/2986392.jpg" 
+                  className="mr-3" alt="1"  style={{ width: '70px', height: '70px' }}/>
+                  <div className="flex flex-column align-items-start">
+                    <span className="text-xl text-900 font-medium mb-1"> Dr. Gonzalez</span>
+                    <span className="text-600 font-medium mb-2"> Gastroenterólogo</span>
+                    <span className="bg-blu-50 text-blue-400 border-round inlin e-flex py-1 px-2 text-sm">Médico</span>
+                  </div>
+                </div>
+                <div className="flex justify-content-between pt-4">
+                  <Button> Agendar Cita</Button>
+                </div>
+              </div>
+            </div>
+            <div className="col-12 md:col-8 xl:col-6 p-3">
+              <div className="surface-card shadow-2 border-round p-4">
+                <div className="flex border-bottom-1 surface-border pb-4">
+                  <img src="https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2023/08/02/2986392.jpg" 
+                  className="mr-3" alt="1"  style={{ width: '70px', height: '70px' }}/>
+                  <div className="flex flex-column align-items-start">
+                    <span className="text-xl text-900 font-medium mb-1"> Dr. Gonzalez</span>
+                    <span className="text-600 font-medium mb-2"> Gastroenterólogo</span>
+                    <span className="bg-blu-50 text-blue-400 border-round inlin e-flex py-1 px-2 text-sm">Médico</span>
+                  </div>
+                </div>
+                <div className="flex justify-content-between pt-4">
+                  <Button> Agendar Cita</Button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-
-           
+            </div>
           </div>
         </div>
-      </div>
+      
     </Layout>
   )
 }
