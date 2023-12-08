@@ -8,16 +8,15 @@ import styles from '../styles/styles.module.css';
 export default function bot() {
 const otherFontTheme = {
   background: '#f5f8fb',
-  fontFamily: 'Arial',
-  fontFamily: 'Helvetica Neue',
+  fontFamily: 'Tenorite',
+  fontFamily: 'Tenorite',
  
-  headerBgColor: '#ff998d',
+  headerBgColor: '#94B0B7',
   headerFontColor: '#d72d3b',
 
   headerFontColor: '#fff',
-  botBubbleColor: 'rgb(255, 93, 106)',
-  botFontColor: '#fff',
-
+  botBubbleColor: '#DDDDDA',
+  botFontColor: '#000000',
   
 };
 const steps=[{
@@ -35,8 +34,7 @@ const steps=[{
            
            {value: "Envíos y costos        ",label: "5. Envíos a domicilio        ",trigger:"EC"},
            
-           {value: "Métodos de pago        ",label: "6. Métodos de pago        ",trigger:"Metodosp"},
-       
+           {value: "Métodos de pago        ",label: "6. Métodos de pago        ",trigger:"Metodosp"},    
   
   ],
   
@@ -67,11 +65,6 @@ const steps=[{
            {value: "Dolores Musculares",       label: "Dolores musculares",       trigger:"Musculares"},
            {value: "Fatiga Mental ",    label: "Fatiga Mental",   trigger:"Mental"},  
            
-           
-
-
-
-
   ],
   
 },
@@ -86,14 +79,6 @@ const steps=[{
   ],
   
 },
-
-
-
-
-
-
-
-
 
 
 
@@ -792,7 +777,7 @@ return(
     <ChatBot
         steps={steps}
         
-        headerTitle= "     Nursy-Servicio al Cliente"
+        headerTitle= "Nursy-Servicio al Cliente"
       
         floatingStyle={{
 
@@ -803,8 +788,8 @@ return(
         opened={false}
         floating={true}
         style={{ width: '450px', height: '470px', headerBgColor:'purple' }}
-          floatingIcon={<img src="/images/Chatbot.png" height={'50px'} alt="Chatbot Icon" />}
-          botAvatar="/images/Chatbot2.png"
+          floatingIcon={<img src="/images/docChat.png" height={'50px'} alt="Chatbot Icon" />}
+          botAvatar="/images/docChat.png"
         optionStyle={{ width: '200px', fontSize: '12px', background:'#d72d3b' }}
       />
   
