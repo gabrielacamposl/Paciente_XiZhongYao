@@ -114,7 +114,7 @@ const Layout = (props) => {
         <meta property="og:description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
         <meta property="og:image" content="https://www.primefaces.org/static/social/sakai-nextjs.png"></meta>
         <meta property="og:ttl" content="604800"></meta>
-        <link rel="icon" href={`XZY.ico`} type="image/x-icon"></link>
+        <link rel="icon" href={`/XZY.ico`} type="image/x-icon"></link>
       </Head>
 
       <div className={containerClass}>
