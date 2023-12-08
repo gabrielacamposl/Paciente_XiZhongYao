@@ -131,15 +131,21 @@ export default function Home() {
   const Topbar = () => {
     return (
       <div className="topbar">
-        <img src={`/layout/images/XZY.svg`} width="47.22px" height={'35px'} widt={'true'} alt="logo" />
+        <div className='surface-overlay py-3 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static'>
+          <img src={`/layout/images/XZY.svg`} width="47.22px" height={'35px'} widt={'true'} alt="logo" />
         <span>XiZhongYao</span>
-        <button type="button" className="p-link layout-topbar-button" onClick={() => { router.push('/pages/usuario/PerfilUser/perfil') }}>
-          <i className="pi pi-user"></i>
-          <span>Iniciar Sesión</span>
-        </button>
-
-        
-        
+        <a className='p-ripple cursor-pointer block lg:hidden text-700'>
+          <i className='pi pi-bars text-4x1'> 
+          </i>
+        </a>
+        <div className='align-items-center flex-grown-1 hidden lg:flex absolute lg:static w-full surface-overlay left-0 top-100 px-6 lg:px-0 z-2 shadow-2 lg:shadow-none'>
+          <ul className='list-none p-0 m-0 flex lg:align-items-center text-900 select-none flex-column lg:flex-row cursor-pointer lg:w-4'></ul>
+        </div>
+        <div className='flex justify-content-end lg:text-right lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0 lg:w-4'>
+          <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  ' onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
+          <Button className='p-button p-component font-bold ml-3 p-button-rounded'>¿Eres Doctor?</Button>  
+        </div>
+        </div>    
       </div>
     );
   }
@@ -150,7 +156,7 @@ export default function Home() {
   return (
     <>
       
-       <Topbar />
+      <Topbar />
 <div className="grid grid-nogutter surface-0 text-800">
     <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
         <section>
