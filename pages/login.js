@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
-import AppConfig from '@/layout/AppConfig';
+import AppConfig from '@/layout/AppConfig';;
+import { Divider } from 'primereact/divider';
+import { classNames } from 'primereact/utils';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import React, { forwardRef, useContext, useImperativeHandle, useRef, useState } from 'react';
 
 
 import axios from 'axios';
@@ -13,9 +16,11 @@ import { InputText } from 'primereact/inputtext';
 
 import * as components from './components';
 import Image from 'next/image';
-import myImage from '../imagenes/login/loto.jpg';
-import myImage1 from '../imagenes/login/flower1.jpeg';
-import loto from '../imagenes/login/principal1.png';
+import myImage from '../imagenes/login/green2.png';
+import myImage1 from '../imagenes/login/green.png';
+import myImage2 from '../imagenes/login/LogoLogin.png';
+import myImage3 from '../imagenes/login/sourceResetPass.png';
+import loto from '../imagenes/login/XZY.png';
 import styles from '../styles/styles.module.css';
 import { iniciarSesion, resetearPassword } from '@/components/mensajesNotificaciones/links';
 import {
@@ -24,7 +29,11 @@ import {
 
 
 
-export default function Home() {
+
+export default function Login() {
+
+
+ 
   //----------------| Lista de variables |----------------
   const [signIn, toggle] = useState(true);
   // --> Campos de entrada
@@ -128,6 +137,7 @@ export default function Home() {
     }
   }
 
+  
   const Topbar = () => {
     return (
       <div className="topbar">
@@ -142,40 +152,24 @@ export default function Home() {
           <ul className='list-none p-0 m-0 flex lg:align-items-center text-900 select-none flex-column lg:flex-row cursor-pointer lg:w-4'></ul>
         </div>
         <div className='flex justify-content-end lg:text-right lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0 lg:w-4'>
-          <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  ' onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
-          <Button className='p-button p-component font-bold ml-3 p-button-rounded'>¿Eres Doctor?</Button>  
+          <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  '  onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
+          <Button className='p-button p-component font-bold ml-3 p-button-rounded'>¿Eres Doctor?</Button>
         </div>
-        </div>    
+
+        </div>
+        
       </div>
     );
   }
+  
   
 
 
   //---------------------------| Valor que regresara |---------------------------
   return (
     <>
-      
-      <Topbar />
-<div className="grid grid-nogutter surface-0 text-800">
-    <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
-        <section>
-            <span className="block text-6xl font-bold mb-1">Create the screens</span>
-            <div className="text-6xl text-primary font-bold mb-3">your visitors deserve to see</div>
-            <p className="mt-0 mb-4 text-700 line-height-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-            <Button label="Iniciar Sesión" type="button" className="mr-3 p-button-raised" />
-            <Button label="Crear Cuenta" type="button" className="p-button-outlined" />
-        </section>
-    </div>
-    <div className="col-12 md:col-6 overflow-hidden">
-        <img src="/images/analisCli.jpg" alt="hero-1" className="md:ml-auto block md:h-full" style={{ clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }} />
-    </div>
-</div>
-    
-
-
-     {/*  <components.Container className={`card m-auto mt-8 ${styles.card}`} >
+       <Topbar />
+      <components.Container className={`card m-auto mt-8 ${styles.card}`} >
         <components.SignUpContainer className={`card ${styles.card}`} signinIn={signIn}>
           <components.Form  >
 
@@ -202,9 +196,10 @@ export default function Home() {
 
 
         <components.SignInContainer className={`card ${styles.card}`} signinIn={signIn}>
+          
 
           <components.Form >
-            <Image src={loto} className={styles['logo']} alt="Mi imagen" priority={true} />
+            <Image src={loto} className={styles['logo']} alt="Mi imagen" priority={true} style={{ width: '50px', height: '50px' }} />
             <h1 className={`font-bold text-center`}>Iniciar Sesión</h1>
 
             <label htmlFor="email1" className="block text-900 ">Correo</label>
@@ -243,18 +238,33 @@ export default function Home() {
             </components.leftOverLayPanel>
 
             <components.RightOverLayPanel signinIn={signIn}>
-              <components.Title>¡Bienvenido de nuevo!</components.Title>
-              <components.Title2>Jardín del Edén</components.Title2>
-
+            <Image src={myImage2} className={styles['my-image']}  alt="Mi imagen"
+            priority={true}  style={{  height: '70px', width: '70px' ,
+            marginTop: '120px',  }}
+            />
+            <Divider/>
+            
+            <components.Title>XIZHONGYAO</components.Title>
+            <Divider layout="horizontal" style={{ borderColor: '#7F6000', borderWidth: '2px', 
+            borderStyle: 'solid' ,
+            marginTop: '1px', 
+            marginLeft: '20px',
+            }}></Divider>
+            <Divider/>
+            <br/>
+              <components.Title2>Cuidando tu salud</components.Title2>
+    
             </components.RightOverLayPanel >
-            <Image src={myImage1} className={styles['my-image']} alt="Mi imagen" priority={true} />
+            <Image src={myImage3} className={styles['my-image']} alt="Mi imagen" priority={true}  />
             <Image src={myImage} className={styles['my-image']} alt="Mi imagen" priority={true} />
           </components.Overlay>
         </components.OverlayContainer>
       </components.Container>
       <AppConfig />
+        
+
+      
     </>
-  )   */}
+  )
 }
 
- 
