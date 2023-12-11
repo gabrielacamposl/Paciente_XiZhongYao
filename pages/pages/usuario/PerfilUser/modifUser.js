@@ -121,40 +121,54 @@ const Doctores = () => {
           <div className="card">
             <div className="surface-card p-5 shadow-2 border-round flex-auto">
             <div className="flex flex-column align-items-center flex-or">
-            <span className="font-medium text-900 mb-2">Profile Picture</span>
+            <span className="font-medium text-900 mb-2">Foto de Perfil</span>
             <Image style={{borderRadious:'50%'}} src={`/images/analisCli.jpg`} alt="avatar-f-2" className="h-10rem w-10rem rounded-full" />
             <Button
               icon="pi pi-pencil" // Agrega el icono de lápiz
               className=' p-button-rounded -mt-4 '
             />
           </div>
-              <div className="text-900 font-semibold text-lg mt-3">Perfil</div>
+              <div className="text-900 font-semibold text-lg mt-3">Mi Perfil</div>
               <div className="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left" role="separator">
                 <div className="p-divider-content"> </div>
               </div>
               <div className="flex gap-5 flex-column md:flex-row">
                 <div className="flex-auto p-fluid">
                   <div className="mb-4">
-                    <label htmlFor="bio" className="block font-medium text-900 mb-2">Bio</label>
-                    <textarea id="bio" type="text" rows="5" className="p-inputtextarea p-inputtext p-component p-inputtextarea-resizable" style={{ overflow: 'hidden', height: '132px' }}></textarea>
+
+                     <div className="field mb-4 col-12 md:col-6">
+                     <label htmlFor="nombreCompleto" className="block text-900 text-xl font-medium mb-2">Nombre</label>
+                      <InputText
+                      id="nombreCompleto" type="text"  placeholder="Nombre"
+                      className={`${estiloNombre} p-inputtext p-component`}
+                       value={nombre} onChange={(e) => { setNombre(e.target.value) }} />
+                     </div>
+
+                       <div className="field mb-4 col-12 md:col-6">
+                       <label htmlFor="apellidos" className="block text-900 text-xl font-medium mb-2">Apellidos</label>
+                        <InputText
+                        id="apellidos" placeholder="Apellido(s)" type="text"
+                         className={`${estiloApellido} p-inputtext p-component`}
+                         value={apellidos} onChange={(e) => { setApellido(e.target.value) }} />
+                       </div>
+                       <div className="field mb-4 col-12 md:col-6">
+                       <label className="block text-900 text-xl font-medium mb-2" type="text">Teléfono:</label>
+                        <InputText placeholder='Teléfono' className={`${estiloPhone} p-inputtext p-component`}
+                        value={phone} onChange={(e) => setPhone(e.target.value)} />
+                       </div>
+
+                        
+
                   </div>
+
                 </div>
-                <div className="mb-4">
-                  <label htmlFor="website" className="block font-medium text-900 mb-2">URL</label>
-                  <div className="p-inputgroup">
-                    <span className="p-inputgroup-addon">http://</span>
-                    <InputText id="website" type="text" className="p-inputtext p-component"></InputText>
-                  </div>
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="state" className="block font-medium text-900 mb-2">Company</label>
-                  <InputText id="state" type="text" className="p-inputtext p-component"></InputText>
-                </div>
+    
               </div>
               <div className="flex flex-column align-items-center">
               <Button aria-label="Update Profile" className="p-button p-component p-ripple w-auto">Guardar Cambios</Button>
               </div>
             </div>
+    
           </div>
           
         </div>

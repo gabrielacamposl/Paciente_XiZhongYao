@@ -25,26 +25,66 @@ const CatalogoFlores = () => {
   const [flores, setFlores] = useState([])
   const [layout, setLayout] = useState('grid');
   //-->Detalles de flor
-  const [detallesFlor, setDetallesFlor] = useState({
+ /* const [detallesFlor, setDetallesFlor] = useState({
     nombreProducto: '',
     descripcionProducto: '',
     precioProducto: '',
     categoriaProducto: '',
     statusProducto: '',
     imagenProducto: [],
+  })*/
 
-  })
+   const [detallesFlor, setDetallesFlor] = useState([
+    {
+      nombreProducto: 'Hierbabuena',
+      descripcionProducto: 'Hermosas rosas rojas para expresar amor y pasión.',
+      precioProducto: '19.99',
+      categoriaProducto: 'Flores Frescas',
+      statusProducto: 'Disponible',
+      imagenProducto: [
+        'https://media.admagazine.com/photos/61e0e4139b19d943aa117a9a/master/w_1600%2Cc_limit/Hierbabuena%2520planta.jpg',
+        'https://www.prensalibre.com/wp-content/uploads/2023/08/Para-que-sirve-la-hierbabuena-01.jpg?quality=52&w=1024',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9MvzPggf_chS_NCsLP_eAdrC8nSHrph5uYIWts6bw9Cj5W_EaagSq_CWACeymo4F9Hmw&usqp=CAU',
+      ],
+    },
+    {
+      nombreProducto: 'Tomillo',
+      descripcionProducto: 'Lirios blancos perfectos para cualquier ocasión.',
+      precioProducto: '24.99',
+      categoriaProducto: 'Flores Frescas',
+      statusProducto: 'Pocos',
+      imagenProducto: [
+        'https://www.sorianatural.es/storage/img/F0000009195_sn_extracto_tomillo_xxi.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSUcHVl5Io_BFyG6qFX7GcevGNLJoWANLBxrO2WQcj_E4JXwyfEEayCdraZ8fn5GGEJo8&usqp=CAU',
+        'https://d3gr7hv60ouvr1.cloudfront.net/CACHE/images/products/b4f57d3af8ba42d8a27601208f804cf0/8179ee6b6750b96775dd8d2636af7b88.jpg',
+      ],
+    },
+    {
+      nombreProducto: 'Serpol',
+      descripcionProducto: 'Girasoles amarillos para alegrar tu día.',
+      precioProducto: '12.99',
+      categoriaProducto: 'Flores Frescas',
+      statusProducto: 'Agotado',
+      imagenProducto: [
+        'https://d3gr7hv60ouvr1.cloudfront.net/CACHE/images/products/46e74adc63ae478d98c6dfa49af38c6e/c0836d6d34d9a9f6f936acc83cd28b93.jpg',
+        'ihttps://d3gr7hv60ouvr1.cloudfront.net/CACHE/images/products/82c58656a42d4ac985cd704af900255a/1925a015e6a9bddf92f77d23da0bbd83.jpg',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8yI3y2qdzLnlJkVBNjTzsIzbsmlbsezKKMw&usqp=CAU',
+      ],
+    }, 
+   ]); 
+
+
   const [mostrarDialog, setMostrarDialog] = useState(false)
   //--> Buscador
   const [buscador, setBuscador] = useState('')
 
   //--> Ejecucion en segundo planos
-  useEffect(() => {
+ {/* useEffect(() => {
     axios.get(mostrarFlores).then(res => {
       setFlores(res.data.fleurs)
       // console.log(res.data.fleurs)
     })
-  }, [])
+  }, [])*/}
 
   //--> Indicar estado de la flor
   const getSeverity = (flor) => {
@@ -72,7 +112,7 @@ const CatalogoFlores = () => {
 
 
   // Función para cambiar el estado de favorito de un producto
-  const toggleFavorito = (flor) => {
+{/** const toggleFavorito = (flor) => {
     if (esFavorito(flor)) {
       // Si ya es favorito, se elimina de la lista de favoritos
       const nuevosFavoritos = favoritos.filter((item) => item.id !== flor.id);
@@ -82,7 +122,7 @@ const CatalogoFlores = () => {
       const nuevosFavoritos = [...favoritos, flor];
       setFavoritos(nuevosFavoritos);
     }
-  };
+  }; */}
 
   // Función para verificar si un producto es favorito
   const esFavorito = (flor) => {
@@ -91,14 +131,14 @@ const CatalogoFlores = () => {
 
 
   //-->Carrito de Compras para flores
-  const AgregarCarrito = async (flor) => {
+ {/** const AgregarCarrito = async (flor) => {
     const token = localStorage.getItem('token')
     const cabecera = {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }
-  /*  try {
+     try {
       const respuesta = await axios.post(agregarProducto, { nombreProducto: flor.nombreProducto }, cabecera)
       if (respuesta.status === 200) {
         if (toast.current) {
@@ -119,18 +159,19 @@ const CatalogoFlores = () => {
           life: 3000,
         });
       }
-    }*/
-  }
+    }
+  } */}
 
   //-->Carrito de Compras para flores
-  const AgregarFavorito = async (flor) => {
+
+ {/**  const AgregarFavorito = async (flor) => {
     const token = localStorage.getItem('token')
     const cabecera = {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }
-  /*  try {
+    try {
       const respuesta = await axios.post(agregarFavoritos, { nombreProducto: flor.nombreProducto }, cabecera)
       if (respuesta.status === 200) {
         toast.current.show({
@@ -147,10 +188,11 @@ const CatalogoFlores = () => {
         detail: error.response.data.msg,
         life: 3000,
       });
-      // if (toast.current) {
-      // }
-    }*/
+      
+    }
   }
+*/}
+
   //--> Modo de vista: lista
   const listItem = (flor) => {
     return (

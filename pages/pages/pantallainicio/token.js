@@ -117,7 +117,7 @@ const Token = () => {
           <div className="card ">
 
             <p className='text-center text-6xl font-bold'>Confirme su cuenta</p>
-            <p className='text-xl text-center'>¡Gracias por elegir Jardín de Edén!</p>
+          
             <p className='text-justify'>
               Verifique en su bandeja de entrada el correo enviado con el asunto<span className='text-cyan-500 font-semibold'>Correo verificación de cuenta</span> que contiene el código de confirmación, es posible que el mensaje haya sido enviado a la carpeta SPAM o similar.
             </p>

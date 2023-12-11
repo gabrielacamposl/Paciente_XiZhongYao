@@ -26,6 +26,7 @@ import { iniciarSesion, resetearPassword } from '@/components/mensajesNotificaci
 import {
   campoVacio, camposVacios, emailInvalido, passwordInvalido, resetearExitoso
 } from '@/components/mensajesNotificaciones/mensajes';
+import { SearchParamsContext } from 'next/dist/shared/lib/hooks-client-context.shared-runtime';
 
 
 
@@ -82,10 +83,10 @@ export default function Login() {
     setMensajeRespuesta('')
     //--> Validar envio a back-end
     try {
-      const respuesta = await axios.post(iniciarSesion, { emailCliente: email, passwordCliente: password })
+      const respuesta = await axios.post(iniciarSesion, { emailPaciente: email, passwordPaciente: password })
       if (respuesta.status === 200) {
         // console.log(respuesta.data.username)
-        localStorage.setItem('nombre', respuesta.data.username)
+     //   localStorage.setItem('nombre', respuesta.data.username)
         localStorage.setItem('token', respuesta.data.token)
         setTimeout(() => { router.push('/pages/dashboard') }, 1000)
       }
@@ -116,7 +117,7 @@ export default function Login() {
     } else { setEstiloEmailRec('') }
 
     try {
-      const respuesta = await axios.post(resetearPassword, { emailCliente: emailrecuperar })
+      const respuesta = await axios.post(resetearPassword, { emailPaciente: emailrecuperar })
       if (respuesta.status === 200) {
         // --> Limpiar variables
         setEmailrecuperar('')
@@ -161,9 +162,77 @@ export default function Login() {
       </div>
     );
   }
-  
-  
 
+  const Footer = () => {
+    return (
+      <div className="footer">
+        <div className='grid grid-nogutter surface-section px-4 py-4 md:px-6 lg:px-8 border-top-1 surface-border'>
+          <div className='col-12 lg:col-6 lg:border-right-1 surface-border'>
+          <img src={`/layout/images/XZY.svg`} width="47.22px" height={'35px'} widt={'true'} alt="logo" />
+          <span className='text-900 block mt-4 mr-3'>KJVKJNVFJVnjkvfvkjew v v kjv c skcbckbvubawnjvb s</span>
+          <span className='text-500 block mt-4'> 2023, XiZhongYao by Dreamteam</span>
+          </div>
+          <div className='col-12 md:col-6 lg:col-3 mt-4 lg:mt-0 lg:pl-4 flex flex-column'>
+            <span className='text-900 text-xl font-medium block'>Company</span>
+            <ul className='list-none p-0'>
+              <li>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>About XiZhongYao</a>
+              </li>
+              <li>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Factories</a>
+              </li>
+            </ul>
+          </div>
+          <div className='col-12 md:col-6 lg:col-3 mt-4 lg:mt-0 lg:pl-4 flex flex-column'>
+            <span className='text-900 text-xl font-medium block'>Account</span>
+            <ul className='list-none p-0'>
+              <li>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>About XiZhongYao</a>
+              </li>
+              <li>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Factories</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="surface-900 py-6 lg:py-4 md:px-6 lg:px-8 flex flex-column lg:flex-row justify-content-between align-items-center">
+          <ul class="list-none p-0 mb-0 flex flex-column md:flex-row flex-order-1 lg:flex-order-0 mt-4 lg:mt-0">
+            <li class="mr-4 mt-3 lg:mt-0">
+              <a tabindex="0" class="cursor-pointer text-0">Investor Relations</a>
+              </li>
+              <li class="mr-4 mt-3 lg:mt-0">
+                <a tabindex="0" class="cursor-pointer text-0">Data Privacy</a>
+                </li>
+                <li class="mr-4 mt-3 lg:mt-0">
+                  <a tabindex="0" class="cursor-pointer text-0">Terms of Service</a>
+                  </li>
+                  <li class="mr-4 mt-3 lg:mt-0">
+                    <a tabindex="0" class="cursor-pointer text-0">Legal Information</a>
+                    </li>
+                    </ul>
+                    <div class="flex align-items-center flex-order-0 lg:flex-order-1">
+                      <a tabindex="0" class="cursor-pointer mr-3 lg:mt-0 block"> 
+                      <i class="pi pi-facebook surface-section p-1 text-sm border-circle text-900">
+                      </i>
+                      </a>
+                      <a tabindex="0" class="cursor-pointer mr-3 lg:mt-0 block">
+                        <i class="pi pi-twitter surface-section p-1 text-sm border-circle text-900"></i>
+                      </a>
+                        <a tabindex="0" class="cursor-pointer mr-3 lg:mt-0 block">
+                          <i class="pi pi-youtube surface-section p-1 text-sm border-circle text-900"></i>
+                        </a>
+                          <a tabindex="0" class="cursor-pointer lg:mt-0 block">
+                            <i class="pi pi-google surface-section p-1 text-sm border-circle text-900">
+                            </i>
+                          </a>
+                      </div>
+          </div>
+        
+      </div>
+    );
+  }
+  
 
   //---------------------------| Valor que regresara |---------------------------
   return (
@@ -187,7 +256,7 @@ export default function Login() {
                 </div>
               )}
 
-            <Button label="Enviar" className="w-full p-3 text-xl" title="enviar" onClick={recuperarPassword} />
+            <Button label="Enviar" className="w-full p-3 text-xl cursor-pointer" title="enviar" onClick={recuperarPassword} />
             <components.Anchor onClick={() => toggle(true)}  >Iniciar Sesión</components.Anchor>
 
 
@@ -200,7 +269,7 @@ export default function Login() {
 
           <components.Form >
             <Image src={loto} className={styles['logo']} alt="Mi imagen" priority={true} style={{ width: '50px', height: '50px' }} />
-            <h1 className={`font-bold text-center`}>Iniciar Sesión</h1>
+            <h1 className={`font-bold text-center cursor-pointer`}>Iniciar Sesión</h1>
 
             <label htmlFor="email1" className="block text-900 ">Correo</label>
             <InputText
@@ -261,6 +330,11 @@ export default function Login() {
         </components.OverlayContainer>
       </components.Container>
       <AppConfig />
+      <br style={{ margin: '5pt' }} />
+      <br style={{ margin: '5pt' }} />
+      <br style={{ margin: '5pt' }} />
+
+      <Footer />
         
 
       

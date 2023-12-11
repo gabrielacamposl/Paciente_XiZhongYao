@@ -1,21 +1,17 @@
 //--> Crear usuario
-export const nuevoUsuario = "http://localhost:4000/api/cliente"
-export const validarToken = "http://localhost:4000/api/cliente/confirmar/"
+export const nuevoPaciente = "http://localhost:4444/api/pacientes"
+export const validarToken = "http://localhost:4444/api/pacientes/confirmar/"
 
 //--> Iniciar sesion
-export const iniciarSesion = "http://localhost:4000/api/cliente/iniSes"
+export const iniciarSesion = "http://localhost:4444/api/pacientes/login"
 
 //--> Resetear password
-export const resetearPassword = "http://localhost:4000/api/cliente/olvide-password"
-export const tokenResetearPassword = "http://localhost:4000/api/cliente/olvide-password/"
-export const cambiarPassword = "http://localhost:4000/api/cliente/olvide-password/"
+export const resetearPassword = "http://localhost:4444/api/pacientes/olvide-password"
+export const tokenResetearPassword = "http://localhost:4444/api/pacientes/olvide-password/"
+export const cambiarPassword = "http://localhost:4444/api/pacientes/olvide-password/"
 
 // --> Catalogo flores
-export const mostrarFlores = "http://localhost:4000/api/productos/mostrarFlores"
-
-// --> Catalogo peluches
-export const mostrarPeluches = "http://localhost:4000/api/productos/mostrarPeluches"
-
+export const mostrarFlores = "http://localhost:4444/api/productos/mostrarFlores"
 
 //----DATOS USUARIO-------
 // --> Cambiar nombre
@@ -28,7 +24,6 @@ export const modificarTel = "http://localhost:4000/api/cliente/modificar/telefon
 export const saveTarjeta = "http://localhost:4000/api/cliente/modificar/tarjeta"
 //->AgregarDirección
 export const saveDir = "http://localhost:4000/api/cliente/modificar/direccion"
-
 
 
 //---CARRITO DE COMPRAS-----
