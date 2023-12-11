@@ -287,7 +287,6 @@ const CatalogoFlores = () => {
               </div>
             )}
 
-
             <Rating value={flor.valoracionGlobal} readOnly cancel={false}></Rating>
           </div>
 
