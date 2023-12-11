@@ -136,10 +136,17 @@ export default function Home() {
         <button type="button" className="p-link layout-topbar-button" onClick={() => { router.push('/pages/usuario/PerfilUser/perfil') }}>
           <i className="pi pi-user"></i>
           <span>Iniciar Sesión</span>
-        </button>
 
-        
-        
+          
+        </button>
+<center>
+        <button type="button" className="p-link layout-topbar-button" onClick={() => { router.push('/pages/usuario/PerfilUser/perfil') }}>
+          <i className="pi pi-user"></i>
+          <span>Eres Doctor?</span>
+
+          
+        </button>
+        </center>
       </div>
     );
   }
@@ -154,12 +161,20 @@ export default function Home() {
 <div className="grid grid-nogutter surface-0 text-800">
     <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
         <section>
-            <span className="block text-6xl font-bold mb-1">Create the screens</span>
-            <div className="text-6xl text-primary font-bold mb-3">your visitors deserve to see</div>
-            <p className="mt-0 mb-4 text-700 line-height-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <span className="block text-6xl font-bold mb-1">XiZhongYao</span>
+            <div className="text-6xl text-primary font-bold mb-3">Interpreta tus Análisis Clínicos</div>
+            <p className="mt-0 mb-4 text-700 line-height-3">Interpretar los análisis clínicos es crucial para comprender el estado de salud personal y tomar medidas preventivas o correctivas cuando sea necesario. Estos análisis proporcionan una visión detallada de diversos aspectos del cuerpo, como niveles de glucosa, lípidos, función renal, entre otros. </p>
+<p>No te quedes con la duda e interpreta tus Análisis Clinícos ahora mismo</p>
+        
+         
+            <a href="/aaa">
+      <Button label="Iniciar Sesión" type="button" className="mr-3 p-button-raised" />
+    </a>
 
-            <Button label="Iniciar Sesión" type="button" className="mr-3 p-button-raised" />
-            <Button label="Crear Cuenta" type="button" className="p-button-outlined" />
+            <a href="/pages/pantallainicio/crearcuenta">
+      <Button label="Registrarse" type="button" className="p-button-outlined" />
+    </a>
+
         </section>
     </div>
     <div className="col-12 md:col-6 overflow-hidden">
@@ -168,87 +183,74 @@ export default function Home() {
 </div>
     
 
+<div>
 
-     {/*  <components.Container className={`card m-auto mt-8 ${styles.card}`} >
-        <components.SignUpContainer className={`card ${styles.card}`} signinIn={signIn}>
-          <components.Form  >
+<br></br>
 
-            <h1 className={`font-bold text-center`}>Recuperar contraseña</h1>
-            <components.Parrafo>Ingresa el correo asociado a tu cuenta</components.Parrafo>
-            <label htmlFor="email1" className="block text-900 ">Email</label>
-            <InputText
-              inputid="email1" value={emailrecuperar} onChange={(e) => setEmailrecuperar(e.target.value)}
-              type="text" placeholder="Email address" className={`block text-900  mb-2 w-full p-3  ${estiloEmailRec}`}
-            />
-            {mensajeRespuesta &&
-              (
-                <div className='my-2'>
-                  <Message severity={estiloRespuesta} text={mensajeRespuesta} />
-                </div>
-              )}
-
-            <Button label="Enviar" className="w-full p-3 text-xl" title="enviar" onClick={recuperarPassword} />
-            <components.Anchor onClick={() => toggle(true)}  >Iniciar Sesión</components.Anchor>
+</div>
 
 
-          </components.Form  >
-        </components.SignUpContainer>
 
+<div className="surface-0 text-center">
+    <div className="mb-3 font-bold text-3xl">
+        <span className="text-900">Ventajas de usar, </span>
+        <span className="text-6xl text-primary font-bold mb-3">XiZhongYao</span>
+    </div>
 
-        <components.SignInContainer className={`card ${styles.card}`} signinIn={signIn}>
+    <div className="text-700 text-xl mb-3 text-center line-height-3">
+Algunas ventajas que te ofrecemos son:.
+</div>
 
-          <components.Form >
-            <Image src={loto} className={styles['logo']} alt="Mi imagen" priority={true} />
-            <h1 className={`font-bold text-center`}>Iniciar Sesión</h1>
+    
+    <div className="grid">
+        <div className="col-12 md:col-4 mb-4 px-5">
+            <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
+                <i className="pi pi-check-circle text-4xl text-pink-500"></i>
+            </span>
+            <div className="text-900 text-xl mb-3 font-medium">Precisión y Consistencia</div>
+            <span className="text-700 line-height-3"> Utilizamos algoritmos avanzados y bases de datos actualizadas para analizar los resultados de manera precisa y consistente.</span>
+        </div>
+        
+        <div className="col-12 md:col-4 mb-4 px-5">
+            <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
+                <i className="pi pi-clock text-4xl text-pink-500"></i>
+            </span>
+            <div className="text-900 text-xl mb-3 font-medium">Eficiencia en el Tiempo</div>
+            <span className="text-700 line-height-3">Automatizando el proceso de interpretación, este sistema acelera significativamente el tiempo requerido para analizar resultados. </span>
+            
+            <div></div>
+            
+            
+            <div>
 
-            <label htmlFor="email1" className="block text-900 ">Correo</label>
-            <InputText
-              inputid="email1" value={email} onChange={(e) => setEmail(e.target.value)}
-              type="text" placeholder="Correo electrónico" className={`block text-900  mb-2 w-full p-3  ${estiloEmail}`}
-            />
-
-            <label htmlFor="password1" className="block text-900 ">Contraseña</label>
-            <Password
-              inputid="password1" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Contraseña"
-              feedback={false} className="w-full " inputClassName={`w-full p-3 md:w-30rem  ${estiloPassword}`} />
-
-            <components.Parrafo onClick={() => toggle(false)} className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}>¿Olvidaste tu contraseña?</components.Parrafo>
-            <Button label="Iniciar Sesión" className="w-full p-3 mb-3 text-xl" onClick={validarEnvio} />
-
-            {mensajeRespuesta &&
-              (<Message severity={estiloRespuesta} text={mensajeRespuesta} />)
-            }
-
-            <components.Parrafo>¿Eres Nuevo?</components.Parrafo>
-            <div className="flex align-items-center">
-              <Link
-                href="/pages/pantallainicio/crearcuenta"
-                className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }}
-              >Crear cuenta</Link>
+            <a href="/aaa">
+      <Button label="Pruebalo" type="button" className="mr-3 p-button-raised" />
+    </a>
             </div>
+            
+         
+      
+        </div>
+        <div className="col-12 md:col-4 md:mb-4 mb-0 px-3">
+            <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
+                <i className="pi pi-shield text-4xl text-pink-500"></i>
+            </span>
+            <div className="text-900 text-xl mb-3 font-medium">Seguridad y Privacidad</div>
+            <span className="text-700 line-height-3">Contamos con algoritmos de cifrado para la protección de datos personales de nuestros pacientes.</span>
+        </div>
+    </div>
+</div>
+    
+<div>
 
-          </components.Form>
-        </components.SignInContainer>
-        <components.OverlayContainer signinIn={signIn}>
-          <components.Overlay signinIn={signIn}>
 
-            <components.leftOverLayPanel signinIn={signIn}>
-              <components.GhostButton onClick={() => toggle(true)}>Iniciar Sesión</components.GhostButton>
-            </components.leftOverLayPanel>
 
-            <components.RightOverLayPanel signinIn={signIn}>
-              <components.Title>¡Bienvenido de nuevo!</components.Title>
-              <components.Title2>Jardín del Edén</components.Title2>
+  
+</div>
 
-            </components.RightOverLayPanel >
-            <Image src={myImage1} className={styles['my-image']} alt="Mi imagen" priority={true} />
-            <Image src={myImage} className={styles['my-image']} alt="Mi imagen" priority={true} />
-          </components.Overlay>
-        </components.OverlayContainer>
-      </components.Container>
       <AppConfig />
     </>
-  )   */}
+  )
 }
 
- 
+
