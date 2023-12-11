@@ -149,7 +149,7 @@ export default function Home() {
       <br style={{ margin: '5pt' }} />
       <Footer/> 
     </>
-  )   */}
+  )
 }
 
  
