@@ -47,7 +47,7 @@ const AppMenu = () => {
     {
       label: 'Tienda Medicinal',
       items: [
-        { label: 'Ver Productos', icon: 'pi pi-fw pi-shopping-bag ', to: '/pages/catalogos/flores' },
+        { label: 'Ver Productos', icon: 'pi pi-fw pi-shopping-bag ', to: '/pages/usuario/Ecommerce/productos' },
         { label: 'Carrito', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/usuario/Ecommerce/carrito' },
         { label: 'Mis Compras', icon: 'pi pi-fw pi-heart', to: '/pages/usuario/Ecommerce/miscompras' },
       ]

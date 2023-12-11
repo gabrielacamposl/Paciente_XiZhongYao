@@ -17,8 +17,12 @@ import { Image } from 'cloudinary-react'
 
 const doctores = () => {
   //----------------| Lista de variables |----------------
-  const [doc, setDoc] = useState();
-  const [docInfo, setDocInfo] = useState({
+   //----------------| Lista de variables |----------------
+   const [doctores, setDoctores] = useState([]);
+   const [layout, setLayout] = useState('grid');
+   const [docInfo, setDocInfo] = useState({});
+   const [mostrarDialog, setMostrarDialog] = useState(false);
+  /* const [docInfo, setDocInfo] = useState({
     username: '',
     especialidad: '',
     creatinina: '',
@@ -26,7 +30,24 @@ const doctores = () => {
     precioConsultaUno: '',
     infoSobre: '',
     profileDoc: [],
-  });
+  }); */
+ 
+   // Datos de ejemplo para los doctores
+   const datosDoctores = [
+     {
+       nombre: "Dr. Gonzalez",
+       especialidad: "Gastroenterólogo",
+       status: "Médico",
+       imagen: "https://cdn2.excelsior.com.mx/media/styles/image800x600/public/pictures/2023/08/02/2986392.jpg",
+     },
+     // ... Puedes agregar más objetos para representar otros doctores
+   ];
+ 
+   useEffect(() => {
+    setDoctores(datosDoctores);
+  }, []);
+
+
 
  
 
