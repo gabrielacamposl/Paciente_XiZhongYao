@@ -21,18 +21,18 @@ import { Menu } from 'primereact/menu';
 const analisisResult = () => {
 
   const [datosUsuario, setDatosUsuario] = useState({
-    Glucosa: '',
-    Urea: '',
-    Creatinina: '',
-    'Ácido Úrico': '',
-    'Colesterol Total': '',
-    'Colesterol Ldl': '',
-    'Colesterol Hdl': '',
-    Trigliceridos: '',
-    'Bilirrubina Total': '',
-    'TGO (Transaminasa Glutámico Oxalacética)': '',
-    'TGP (Transaminasa Glutámico Pirúvica)': '',
-    'GGT (Gamma-Glutamil Transferasa)': '',
+    Glucosa: '80',
+    Urea: '54',
+    Creatinina: '0.8',
+    'Ácido Úrico': '8.5',
+    'Colesterol Total': '200',
+    'Colesterol Ldl': '89',
+    'Colesterol Hdl': '160',
+    Trigliceridos: '150',
+    'Bilirrubina Total': '1.3',
+    'TGO (Transaminasa Glutámico Oxalacética)': '7',
+    'TGP (Transaminasa Glutámico Pirúvica)': '6',
+    'GGT (Gamma-Glutamil Transferasa)': '35',
   });
 
   const parametrosRecomendados = {
@@ -72,7 +72,7 @@ const analisisResult = () => {
     }
   };
 
-  
+
   const rows = Object.keys(parametrosRecomendados).map(analito => ({
     analito,
     parametros: parametrosRecomendados[analito],
@@ -95,7 +95,7 @@ const analisisResult = () => {
   const obtenerRecomendacion = (analito, comparacion) => {
     return recomendaciones[analito][comparacion];
   };
-  
+
 
   const [formValues, setFormValues] = useState({
     glucosa: '',
@@ -142,28 +142,31 @@ const analisisResult = () => {
     setError('');
   };
 
-  
+
   //----------------| Valor que regresará |----------------
   return (
     <Layout title="Interpretación de Análisis" description="Interpreta los análisis clínicos sanguíneos de los pacientes">
 
       <div className="grid">
-      <div className="col-12">
-                <div className="card">
-                    <h3>Interpretación de los Análisis</h3>
-                    <DataTable value={rows} className="mt-3">
-                       <Column field="analito" header="Analito" />
-                       <Column field="parametros" header="Parámetros Recomendados" />
-                       <Column field="valor" header="Datos del Usuario" body={(rowData) => (
-                       <input  type="text"  value={rowData.valor} onChange={(e) => {const newValue = e.target.value;
-                        setDatosUsuario((prevDatos) => ({ ...prevDatos, [rowData.analito]: newValue }));
-                         }} 
-                         style={obtenerEstiloTexto(rowData.comparacion)} />
-                       )} />
-                       <Column field="comparacion" header="Comparación con Parámetros" />
-                     </DataTable>
-                </div>
-            </div>
+        <div className="col-12">
+          <div className="card">
+            <h3>Interpretación de los Análisis</h3>
+            <DataTable value={rows} className="mt-3">
+              <Column field="analito" header="Analito" />
+              <Column field="parametros" header="Parámetros Recomendados" />
+              <Column
+                field="valor"
+                header="Datos del Usuario"
+                body={(rowData) => (
+                  <span style={obtenerEstiloTexto(rowData.comparacion)}>
+                    {datosUsuario[rowData.analito]}
+                  </span>
+                )}
+              />
+              <Column field="comparacion" header="Comparación con Parámetros" />
+            </DataTable>
+          </div>
+        </div>
       </div>
     </Layout>
   );

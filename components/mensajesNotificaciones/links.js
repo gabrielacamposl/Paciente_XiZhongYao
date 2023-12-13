@@ -15,15 +15,15 @@ export const mostrarFlores = "http://localhost:4444/api/productos/mostrarFlores"
 
 //----DATOS USUARIO-------
 // --> Cambiar nombre
-export const modificarNombre = "http://localhost:4000/api/cliente/modificar/username"
+export const modificarNombre = "http://localhost:4444/api/pacientes/modificar/username"
 //->Modificar contraseña
-export const ModificarContrasena = "http://localhost:4000/api/cliente/modificar/password"
+export const ModificarContrasena = "http://localhost:4444/api/pacientes/modificar/password"
 //->Modificar Telefono
-export const modificarTel = "http://localhost:4000/api/cliente/modificar/telefono"
+export const modificarTel = "http://localhost:4444/api/pacientes/modificar/telefono"
 //->AgregarTarjeta
-export const saveTarjeta = "http://localhost:4000/api/cliente/modificar/tarjeta"
+export const saveTarjeta = "http://localhost:4444/api/pacientes/modificar/tarjeta"
 //->AgregarDirección
-export const saveDir = "http://localhost:4000/api/cliente/modificar/direccion"
+export const saveDir = "http://localhost:4000/api/pacientes/modificar/direccion"
 
 
 //---CARRITO DE COMPRAS-----

@@ -192,7 +192,7 @@ const CrearCuenta = () => {
         </div>
         <div className='flex justify-content-end lg:text-right lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0 lg:w-4'>
           <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  '  onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
-          <Button className='p-button p-component font-bold ml-3 p-button-rounded'>¿Eres Doctor?</Button>
+         
         </div>
 
         </div>
@@ -206,29 +206,29 @@ const CrearCuenta = () => {
       <div className="footer">
         <div className='grid grid-nogutter surface-section px-4 py-4 md:px-6 lg:px-8 border-top-1 surface-border'>
           <div className='col-12 lg:col-6 lg:border-right-1 surface-border'>
-          <img src={`/layout/images/XZY.svg`} width="47.22px" height={'35px'} widt={'true'} alt="logo" />
-          <span className='text-900 block mt-4 mr-3'>KJVKJNVFJVnjkvfvkjew v v kjv c skcbckbvubawnjvb s</span>
-          <span className='text-500 block mt-4'> 2023, XiZhongYao by Dreamteam</span>
+          <img src={`/XZY.svg`} width="47.22px" height={'35px'} widt={'true'} alt="logo" />
+          <span className='text-900 block mt-4 mr-3'>Una empresa dedicada al cuidado se su salud, con la mejor tecnología y los mejores profesionistas.</span>
+          <span className='text-500 block mt-4'> © 2023 XiZhongYao, S.A. Todos los derechos reservados.</span>
           </div>
           <div className='col-12 md:col-6 lg:col-3 mt-4 lg:mt-0 lg:pl-4 flex flex-column'>
-            <span className='text-900 text-xl font-medium block'>Company</span>
+            <span className='text-900 text-xl font-medium block'>Compañía</span>
             <ul className='list-none p-0'>
               <li>
-                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>About XiZhongYao</a>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Sobre XiZhongYao</a>
               </li>
               <li>
-                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Factories</a>
-              </li>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>¿Quiénes somos?</a>
+              </li>   
             </ul>
           </div>
           <div className='col-12 md:col-6 lg:col-3 mt-4 lg:mt-0 lg:pl-4 flex flex-column'>
-            <span className='text-900 text-xl font-medium block'>Account</span>
+            <span className='text-900 text-xl font-medium block'>Para Pacientes</span>
             <ul className='list-none p-0'>
               <li>
-                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>About XiZhongYao</a>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Especialistas</a>
               </li>
               <li>
-                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Factories</a>
+                <a tabIndex={0} className='text-600 hover:text-900 transition-duration-150 cursor-pointer mt-3 block'>Diagnóstico por Interpretaciones</a>
               </li>
             </ul>
           </div>
@@ -236,17 +236,14 @@ const CrearCuenta = () => {
         
         <div class="surface-900 py-6 lg:py-4 md:px-6 lg:px-8 flex flex-column lg:flex-row justify-content-between align-items-center">
           <ul class="list-none p-0 mb-0 flex flex-column md:flex-row flex-order-1 lg:flex-order-0 mt-4 lg:mt-0">
-            <li class="mr-4 mt-3 lg:mt-0">
-              <a tabindex="0" class="cursor-pointer text-0">Investor Relations</a>
-              </li>
               <li class="mr-4 mt-3 lg:mt-0">
-                <a tabindex="0" class="cursor-pointer text-0">Data Privacy</a>
+                <a tabindex="0" class="cursor-pointer text-0">Datos de Privacidad</a>
                 </li>
                 <li class="mr-4 mt-3 lg:mt-0">
-                  <a tabindex="0" class="cursor-pointer text-0">Terms of Service</a>
+                  <a tabindex="0" class="cursor-pointer text-0">Términos y Condiciones</a>
                   </li>
                   <li class="mr-4 mt-3 lg:mt-0">
-                    <a tabindex="0" class="cursor-pointer text-0">Legal Information</a>
+                    <a tabindex="0" class="cursor-pointer text-0">Información Legal</a>
                     </li>
                     </ul>
                     <div class="flex align-items-center flex-order-0 lg:flex-order-1">
@@ -260,10 +257,6 @@ const CrearCuenta = () => {
                         <a tabindex="0" class="cursor-pointer mr-3 lg:mt-0 block">
                           <i class="pi pi-youtube surface-section p-1 text-sm border-circle text-900"></i>
                         </a>
-                          <a tabindex="0" class="cursor-pointer lg:mt-0 block">
-                            <i class="pi pi-google surface-section p-1 text-sm border-circle text-900">
-                            </i>
-                          </a>
                       </div>
           </div>
         
@@ -311,55 +304,57 @@ const CrearCuenta = () => {
      <div>
      <div className='px-4 py-8 md:px-6 lg:px-8' style={estiloDelFondo}>
         <div className='flex flex-wrap'>
-          <div className='w-full lg:w-6 p-4 lg:p7' style={color}>
-           <img src="https://png.pngtree.com/png-vector/20230323/ourmid/pngtree-happy-fruit-cartoon-png-image_6661049.png" alt='Image' height='50' className='mb-6'/>
-           <div className='text-xl text-black-alpha-90 font-500 mb-3'>Bienvenido a XIZHONGYAO</div>
+        <div className='w-full lg:w-6 p-4 lg:p7' style={color}>
+           <img src={`/layout/images/XZY.svg`} alt='Image' height='50' className='mb-6'/>
+           <div className='text-xl text-black-alpha-90 font-500 mb-3'>
+            <h2>Bienvenido a XiZhongYao</h2>
+           </div>
            <p className='text-black-alpha-50 line-height-3 mt-0 mb-6'>
-           Quis vel eros donec ac odio tempor orci dapibus. In hac habitasse platea dictumst quisque.
+           
             </p>
             <ul className='list-none p-0 m-0'>
               <li className='flex align-items-start mb-4'>
                 <div>
                   <span className='flex align-items-center justify-content-center bg:purple-400' style={estilo}>
-                    <i className='text-xl text-white pi pi-inbox'>
+                    <i className='text-xl text-white pi pi-shield'>
                     </i>
                   </span>
                 </div>
                 <div className='ml-3'>
-                  <span className='font-medium text-black-alpha-90'>Unlimited Inbox
+                  <span className='font-medium text-black-alpha-90'>Interpretación de resultados
                   </span>
-                  <p className='mt-2 mb-0 text-black-aplha-50 line-height-3'>
-                  Tincidunt nunc pulvinar sapien et. Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra. 
+                  <p className='mt-2 mb-0 text-black-aplha-60 line-height-3'>
+                  A través de una interfaz intuitiva, te proveeremos de una rápida interpretación de tus análisis clínicos, con el objetivo de que te des una mejor idea de tu situación general. 
                   </p>
                 </div>
               </li>
               <li className='flex align-items-start mb-4'>
                 <div>
                   <span className='flex align-items-center justify-content-center bg:purple-400' style={estilo}>
-                    <i className='text-xl text-white pi pi-inbox'>
+                    <i className='text-xl text-white pi pi-shopping-bag'>
                     </i>
                   </span>
                 </div>
                 <div className='ml-3'>
-                  <span className='font-medium text-black-alpha-90'>Unlimited Inbox
+                  <span className='font-medium text-black-alpha-90'>Venta de plantas medicinales
                   </span>
                   <p className='mt-2 mb-0 text-black-aplha-50 line-height-3'>
-                  Tincidunt nunc pulvinar sapien et. Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra. 
+                  Accede a un amplio mercado integrado directamente en la plataforma. Busca aquella que te pueda ayudar mas en tu diagnóstico. 
                   </p>
                 </div>
               </li>
               <li className='flex align-items-start mb-4'>
                 <div>
                   <span className='flex align-items-center justify-content-center bg:purple-400' style={estilo}>
-                    <i className='text-xl text-white pi pi-inbox'>
+                    <i className='text-xl text-white pi pi-calendar'>
                     </i>
                   </span>
                 </div>
                 <div className='ml-3'>
-                  <span className='font-medium text-black-alpha-90'>Unlimited Inbox
+                  <span className='font-medium text-black-alpha-90'>Citas con los mejores médicos
                   </span>
                   <p className='mt-2 mb-0 text-black-aplha-50 line-height-3'>
-                  Tincidunt nunc pulvinar sapien et. Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra. 
+                  Facilitamos el hecho de que obtengas una cita con doctores certificados. Te permitimos buscar, seleccionar y agendar citas de manera sencilla. 
                   </p>
                 </div>
               </li>

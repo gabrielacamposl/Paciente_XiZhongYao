@@ -10,6 +10,7 @@ import AppConfig from './AppConfig';
 import { LayoutContext } from './context/layoutcontext';
 import PrimeReact from 'primereact/api';
 
+
 const Layout = (props) => {
   const { layoutConfig, layoutState, setLayoutState } = useContext(LayoutContext);
   const topbarRef = useRef(null);
@@ -100,6 +101,13 @@ const Layout = (props) => {
     'p-ripple-disabled': !layoutConfig.ripple
   });
 
+  const estiloDelFondo = {
+    backgroundImage: 'url("https://i.pinimg.com/736x/d8/5e/51/d85e51f6ecd887757843ad99d8a41bf9.jpg  ")', // Cambia la ruta por la de tu imagen
+    backgroundSize: 'cover', // Puedes ajustar esto según tus preferencias
+    backgroundPosition: 'center', // Puedes ajustar esto según tus preferencias
+    // Otros estilos que desees agregar
+  };
+
   return (
     <React.Fragment>
       <Head>
@@ -117,7 +125,7 @@ const Layout = (props) => {
         <link rel="icon" href={`/XZY.ico`} type="image/x-icon"></link>
       </Head>
 
-      <div className={containerClass}>
+      <div className={containerClass} style={estiloDelFondo}>
         <AppTopbar ref={topbarRef} />
         <div ref={sidebarRef} className="layout-sidebar">
           <AppSidebar />

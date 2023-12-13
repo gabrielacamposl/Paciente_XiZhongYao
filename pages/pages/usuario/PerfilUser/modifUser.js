@@ -122,7 +122,7 @@ const Doctores = () => {
             <div className="surface-card p-5 shadow-2 border-round flex-auto">
             <div className="flex flex-column align-items-center flex-or">
             <span className="font-medium text-900 mb-2">Foto de Perfil</span>
-            <Image style={{borderRadious:'50%'}} src={`/images/analisCli.jpg`} alt="avatar-f-2" className="h-10rem w-10rem rounded-full" />
+            <Image style={{borderRadious:'50%'}} src={`/images/analisCli.jpg`} alt="avatar-f-2" className="h-10rem w-10rem border-rounder" />
             <Button
               icon="pi pi-pencil" // Agrega el icono de lápiz
               className=' p-button-rounded -mt-4 '

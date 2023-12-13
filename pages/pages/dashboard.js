@@ -11,63 +11,75 @@ import { Dialog } from 'primereact/dialog';
 
 const Dashboard = () => {
 
- //------------------------------|Para mostrar peluches en novedades| |SOLO VISUALIZACIÓN BETA|----------------
-
- 
-
- //-----------------|IMAGENES CARRUSEL NOVEDADES|----------------
-
-  const [products, setProducts] = useState([]);
-
-  const responsiveOptions = [
-    { breakpoint: '1190px', numVisible: 1, numScroll: 1 },
-    { breakpoint: '990px', numVisible: 2, numScroll: 2 },
-    { breakpoint: '950px', numVisible: 3, numScroll: 3},
-  ];
-
-  const temporadas = [
-    { temporada: "Invierno", duracion: "10 dias" , image: "https://i.pinimg.com/originals/7b/4a/09/7b4a091e790978ebca8bebed22d838c6.png"},
-    { temporada: "Primavera", duracion: "12 dias" , image: "https://i.pinimg.com/originals/6f/d4/13/6fd413398bdd8e81fccddef9f1e247a8.png"},
-    { temporada: "Invierno", duracion: "10 dias" , image: "https://i.pinimg.com/originals/30/f7/17/30f717dcc907771af93fa4a7c8dd7795.png"},
-    { temporada: "Primavera", duracion: "12 dias" , image: "https://i.pinimg.com/originals/6f/d4/13/6fd413398bdd8e81fccddef9f1e247a8.png"},
-    { temporada: "Invierno", duracion: "10 dias" , image: "https://i.pinimg.com/originals/30/f7/17/30f717dcc907771af93fa4a7c8dd7795.png"},
-  ]
+  //------------------------------|Para mostrar peluches en novedades| |SOLO VISUALIZACIÓN BETA|----------------
 
 
-  const plantillaTemporada = (temporadas) => {
-    return (
-      <div className="flex align-items-center ">
-     
-        <img  className="align-items-center "  src={`${temporadas.image}`}  style={{ width: '950px', height: '330px' }} />
-          {/* <img src={`https://primefaces.org/cdn/primereact/images/product/${temporadas.image}`}
-           className="w-6 shadow-2" /> */}
-
-        {/* <div>
-          <h4 className="mb-1">{temporadas.temporada}</h4>
-          <h6 className="mt-0 mb-3">{temporadas.duracion}</h6>
-          <Tag value={temporada.inventoryStatus} severity={getSeverity(temporada)}></Tag>
-          <div className="mt-5 flex flex-wrap gap-2 justify-content-center">
-            <Button icon="pi pi-search" className="p-button p-button-rounded" />
-            <Button icon="pi pi-star-fill" className="p-button-success p-button-rounded" />
-          </div> */}
-        {/* </div> */}
-      </div>
-    );
-  };
 
 
   return (
-    <Layout
-      title="Inicio"
-      description="Página principal de Jardín del Edén"
-    >
+    <Layout title="Inicio" description="Página principal de XiZhongYao" >
       <div className="grid">
         <div className="col-12">
           <div className="card">
-            <h2 className="text-center">NOVEDADES</h2>
-            <Carousel value={temporadas} numVisible={1} numScroll={3}
-              className="custom-carousel" circular responsiveOptions={responsiveOptions}
-              autoplayInterval={3000} itemTemplate={plantillaTemporada} />
+            <div className="grid grid-nogutter surface-0 text-800">
+              <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+                <section>
+                <div className="text-8xl text-primary font-bold mb-1 text-center">XiZhongYao </div> <br/>
+                  <span className="block text-6xl font-bold mb-1 ">Interpreta tus Análisis Clínicos</span> <br/>
+                  
+                  <p className="mt-0 mb-4 text-700 line-height-3">Interpretar los análisis clínicos es crucial para comprender el estado de salud personal 
+                  y tomar medidas preventivas o correctivas cuando sea necesario. 
+                  Estos análisis proporcionan una visión detallada de diversos aspectos del cuerpo, como niveles de glucosa, lípidos, función renal, entre otros. </p>
+                  <p>No te quedes con la duda e interpreta tus Análisis Clinícos ahora mismo, en la opción "Interpretar Análisis", que se encuentra en el menú
+                    ubicado en la parte izquierda de tu pantalla.
+                  </p>
+                </section>
+              </div>
+              <div className="col-12 md:col-6 overflow-hidden">
+                <img src="/images/analisCli.jpg" alt="hero-1" className="md:ml-auto block md:h-full" style={{ clipPath: 'polygon(8% 0, 100% 0%, 100% 100%, 0 100%)' }} />
+              </div>
+            </div>
+            <div className="surface-0 text-center">
+              <div className="mb-3 font-bold text-3xl">
+                <br/> <br/>
+                <span className="text-900">Ventajas de usar nuestra plataforma, </span>
+                <span className="text-900 text-primary font-bold mb-3">XiZhongYao</span>
+              </div>
+
+              <div className="text-700 text-xl mb-3 text-center line-height-3">
+                Algunas ventajas que te ofrecemos son:
+              </div>
+              <div className="grid">
+                <div className="col-12 md:col-4 mb-4 px-5">
+                  <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
+                    <i className="pi pi-check-circle text-4xl text-green-500"></i>
+                  </span>
+                  <div className="text-900 text-xl mb-3 font-medium">Precisión y Consistencia</div>
+                  <span className="text-700 line-height-3"> Utilizamos algoritmos avanzados y bases de datos actualizadas para 
+                  analizar los resultados de manera precisa y consistente.</span>
+                </div>
+
+                <div className="col-12 md:col-4 mb-4 px-5">
+                  <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
+                    <i className="pi pi-clock text-4xl text-blue-500"></i>
+                  </span>
+                  <div className="text-900 text-xl mb-3 font-medium">Eficiencia en el Tiempo</div>
+                  <span className="text-700 line-height-3">Automatizando el proceso de interpretación, 
+                  este sistema acelera significativamente el tiempo requerido para analizar resultados. </span>
+
+                </div>
+                <div className="col-12 md:col-4 md:mb-4 mb-0 px-3">
+                  <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
+                    <i className="pi pi-shield text-4xl text-blue-500"></i>
+                  </span>
+                  <div className="text-900 text-xl mb-3 font-medium">Seguridad y Privacidad</div>
+                  <span className="text-700 line-height-3">Contamos con algoritmos de cifrado para la protección de datos 
+                  personales de nuestros pacientes.</span>
+                </div>
+              </div>
+            </div>
+            <div>
+            </div>
           </div>
         </div>
       </div>

@@ -5,6 +5,13 @@ import { Dialog } from 'primereact/dialog';
 import { Tag } from 'primereact/tag';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { InputText } from 'primereact/inputtext';
+import { useRouter } from 'next/router';
+import { Table, TableCell, TableRow, TableBody, TableContainer, TableHeader } from "semantic-ui-react";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { Image } from 'cloudinary-react';
+import Gallery from 'react-images';
+
 
 
 const Doctores = () => {
@@ -14,6 +21,7 @@ const Doctores = () => {
   const [docInfo, setDocInfo] = useState({});
   const [mostrarDialog, setMostrarDialog] = useState(false);
   const [buscador, setBuscador] = useState('');
+  const router = useRouter();
 
   // Datos de ejemplo para los doctores
   const datosDoctores = [
@@ -24,30 +32,30 @@ const Doctores = () => {
       imagen: "https://i.pinimg.com/564x/3c/d2/41/3cd2412f41301c2a8373ef90bb4c338a.jpg",
     },
     {
-        nombre: "Dr. Antonio Dávalos Casas",
-        especialidad: "Pediatra",
-        status: "Médico",
-        imagen: "https://i.pinimg.com/564x/c1/01/a3/c101a3c795879ed7f846689ab1759df4.jpg",
-      },
-      {
-        nombre: "Dr. Ádrián Real Meza",
-        especialidad: "Gastroenterólogo",
-        status: "Médico",
-        imagen: "https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg",
-      },
-      {
-        nombre: "Dr. Pablo García Márquez",
-        especialidad: "Gastroenterólogo",
-        status: "Médico",
-        imagen: "https://i.pinimg.com/236x/98/0b/26/980b2638500a0b04408fe5a8044aee73.jpg",
-      },
-      {
-        nombre: "Dra. Alma Galván Torres",
-        especialidad: "Gastroenterólogo",
-        status: "Médico",
-        imagen: "https://i.pinimg.com/236x/05/09/f2/0509f2d5f9f0a8f704e09b74f0cf185f.jpg",
-      },
-    // ... Puedes agregar más objetos para representar otros doctores
+      nombre: "Dr. Antonio Dávalos Casas",
+      especialidad: "Pediatra",
+      status: "Médico",
+      imagen: "https://i.pinimg.com/564x/c1/01/a3/c101a3c795879ed7f846689ab1759df4.jpg",
+    },
+    {
+      nombre: "Dr. Ádrián Real Meza",
+      especialidad: "Gastroenterólogo",
+      status: "Médico",
+      imagen: "https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg",
+    },
+    {
+      nombre: "Dr. Pablo García Márquez",
+      especialidad: "Gastroenterólogo",
+      status: "Médico",
+      imagen: "https://i.pinimg.com/236x/98/0b/26/980b2638500a0b04408fe5a8044aee73.jpg",
+    },
+    {
+      nombre: "Dra. Alma Galván Torres",
+      especialidad: "Gastroenterólogo",
+      status: "Médico",
+      imagen: "https://i.pinimg.com/236x/05/09/f2/0509f2d5f9f0a8f704e09b74f0cf185f.jpg",
+    },
+
   ];
 
 
@@ -56,46 +64,46 @@ const Doctores = () => {
     setDoctores(datosDoctores);
   }, []);
 
-    //--> Filtrar doctores por el buscador
-      
-      const limpiarBusqueda = () => {
-        setBuscador("");
-        setDoctores(datosDoctores);
-      };
-      
-      const buscarEnTiempoReal = (input) => {
-        const busqueda = input.toLowerCase();
-        const doctoresFiltrados = datosDoctores.filter(
-          (doctor) =>
-            doctor.nombre.toLowerCase().includes(busqueda) ||
-            doctor.especialidad.toLowerCase().includes(busqueda)
-        );
-        setDoctores(doctoresFiltrados);
-      };
-      
-      //--> Barra para cambiar modo de vista
-      const header = () => {
-        return (
-            
-          <div className="flex justify-content-between">
-            <div className="p-inputgroup w-4">
-              <Button icon="pi pi-search" />
-              <InputText
-                placeholder="Buscar por nombre o especialidad"
-                value={buscador}
-                onChange={(e) => {
-                  setBuscador(e.target.value);
-                  buscarEnTiempoReal(e.target.value);
-                }}
-              />
-              <Button icon="pi pi-times" onClick={limpiarBusqueda} disabled={!buscador} />
-            </div>
-            <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
-          </div>
-        );
-      };
-      
-      
+  //--> Filtrar doctores por el buscador
+
+  const limpiarBusqueda = () => {
+    setBuscador("");
+    setDoctores(datosDoctores);
+  };
+
+  const buscarEnTiempoReal = (input) => {
+    const busqueda = input.toLowerCase();
+    const doctoresFiltrados = datosDoctores.filter(
+      (doctor) =>
+        doctor.nombre.toLowerCase().includes(busqueda) ||
+        doctor.especialidad.toLowerCase().includes(busqueda)
+    );
+    setDoctores(doctoresFiltrados);
+  };
+
+  //--> Barra para cambiar modo de vista
+  const header = () => {
+    return (
+
+      <div className="flex justify-content-between">
+        <div className="p-inputgroup w-4">
+          <Button icon="pi pi-search" />
+          <InputText
+            placeholder="Buscar por nombre o especialidad"
+            value={buscador}
+            onChange={(e) => {
+              setBuscador(e.target.value);
+              buscarEnTiempoReal(e.target.value);
+            }}
+          />
+          <Button icon="pi pi-times" onClick={limpiarBusqueda} disabled={!buscador} />
+        </div>
+        <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
+      </div>
+    );
+  };
+
+
 
   //--> Modo de vista: lista
   const listItem = (doctor) => {
@@ -111,7 +119,8 @@ const Doctores = () => {
             </div>
           </div>
           <div className="flex justify-content-between pt-4">
-            <Button label="Agendar Cita" />
+            <Button label="Agendar Cita" onClick={() => { router.push('/pages/usuario/Medicine/agendarCita') }} />
+            <Button label="Ver más información" outlined onClick={() => dialogo(doctor)} />
           </div>
         </div>
       </div>
@@ -132,8 +141,8 @@ const Doctores = () => {
             </div>
           </div>
           <div className="flex justify-content-between pt-4">
-            <Button label="Agendar Cita" />
-            <Button label="Ver más información"  outlined />
+            <Button label="Agendar Cita" onClick={() => { router.push('/pages/usuario/Medicine/agendarCita') }} />
+            <Button label="Ver más información" outlined onClick={() => dialogo(doctor)} />
           </div>
         </div>
       </div>
@@ -146,29 +155,80 @@ const Doctores = () => {
     return layout === 'list' ? listItem(doctor) : gridItem(doctor);
   };
 
+  //----------------| Funciones para dialogo |----------------
+  const dialogo = (doctor) => {
+    setDocInfo(doctor);
+    setMostrarDialog(true);
+  }
+
+  const cerrarDialogo = () => {
+    setMostrarDialog(false);
+    setDocInfo({});
+  }
+
+  const botonesDialogo = (
+    <Button label="Cerrar" icon="pi pi-times" onClick={cerrarDialogo} className="p-button-text" />
+  )
+
   //----------------| Valor que regresará |----------------
   return (
     <Layout title="Nuestros Profesionales" description="Acceso al listado de los médicos disponibles">
       <div className="grid">
         <div className="col-12">
           <div className="card">
-          <h2>Nuestros Profesionales</h2>
+            <h2>Nuestros Profesionales</h2>
             <DataView value={doctores} itemTemplate={itemTemplate} layout={layout} header={header()} />
-            <Dialog
-              header={` ${doctor.nombre}`}
-              
-            >
-              <div className="flex flex-column w-full mt-4">
-                <section className="flex flex-column w-full mt-4">
-                    <div className="flex w-full justify-content-between align-items-center mb-4">
-                        <span className="font-semibold text-base text-600">Información del Doctor</span>    
-                    </div>
-                    <div>
 
-                    </div>
-                </section>
-              
+
+            <Dialog header={`Información de ${docInfo.nombre}`}
+              visible={mostrarDialog} onHide={cerrarDialogo}
+              footer={botonesDialogo} style={{ width: '35vw' }}>
+                <Gallery style={{borderRadious:'50%'}} src={`Información de ${docInfo.imagen}`} alt="avatar-f-2" className="h-10rem w-10rem border-rounder"/>
+                <div className="flex flex-column align-items-center flex-or">
+                <Image style={{borderRadious:'50%'}} src={`Información de ${docInfo.imagen}`} alt="avatar-f-2" className="h-10rem w-10rem border-rounder" />
+                  <img></img>
+                </div>
+              <div className="mt-5">
+                <div>
+                  <p className="my-2"><span className="font-semibold text-lg">Nombre:</span>{docInfo.nombre}</p>
+                </div>
+                <div>
+                   <p className="my-2"><span className="font-semibold text-lg">Especialidad:    </span>{docInfo.especialidad}</p>
+                </div>
+                <div>
+                  <p className="my-2"><span className="font-semibold text-lg">Cédula Profesional:</span>{docInfo.estatus}</p>
+                </div>
+               
+                
+
+                <DataTable>
+                  <Column field="${docInfo.nombre}" header="Nombre del Médico" /> 
+                  <Column header="Nombre del Médico">{docInfo.nombre} </Column>
+                  <Column field="especialidad" header="Especialidad:" />
+                  <Column field="estatus" header="Cédula Profesional:" />
+
+
+                </DataTable>
+
+                <div className="border-y-1 surface-border py-4 my-4">
+                  <p className="font-medium text-lg text-700 mt-0">
+                    Descripción
+                  </p>
+                  <p class="text-base text-900 mt-0 mb-0">
+                    Donec enim diam vulputate ut. Tellus mauris a diam maecenas.
+                    At varius vel pharetra vel turpis. Diam sollicitudin tempor id 
+                    eu nisl nunc mi ipsum faucibus. Amet luctus venenatis
+                    lectus magna fringilla urna porttitor rhoncus.
+                  </p>
+                </div>
+
               </div>
+
+
+
+
+
+
             </Dialog>
           </div>
         </div>
