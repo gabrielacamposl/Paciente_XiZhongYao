@@ -3,7 +3,9 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
 import AppConfig from '@/layout/AppConfig';
+import { Toast } from 'primereact/toast';
 
+import { Card } from 'primereact/card';
 
 import axios from 'axios';
 import { Button } from 'primereact/button';
@@ -24,11 +26,29 @@ import {
 
 
 
+
+import Layout from "@/layout/layout"
+import { Carousel } from 'primereact/carousel';
+
+import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
+import { Paginator } from 'primereact/paginator';
+// import { Rating } from 'primereact/rating';
+import { Tag } from 'primereact/tag';
+
+import { Dialog } from 'primereact/dialog';
+
+
+
+
+
+
 export default function Home() {
   //----------------| Lista de variables |----------------
   const router = useRouter();
 
 
+
+  
   const Topbar = () => {
     return (
       <div className="topbar">
@@ -132,15 +152,20 @@ export default function Home() {
                     <section>
                         <span className="block text-6xl font-bold mb-1">XiZhongYao S.A</span>
                         <div className="text-6xl text-primary font-bold mb-3">Interpreta tus Análisis Clínicos</div>
-                        <p className="mt-0 mb-4 text-700 line-height-3">Interpretar los análisis clínicos es crucial para comprender el estado de salud personal y tomar medidas preventivas o correctivas cuando sea necesario. Estos análisis proporcionan una visión detallada de diversos aspectos del cuerpo, como niveles de glucosa, lípidos, función renal, entre otros. </p>
-                        <p>No te quedes con la duda e interpreta tus Análisis Clinícos ahora mismo</p>
-
-
-                        <Button label="Iniciar Sesión" type="button" className="mr-3 p-button-raised" />
+                        
+                        <div className="text-700 text-2xl mb-5">Interpretar los análisis clínicos es crucial para comprender el estado de salud personal y tomar medidas preventivas o correctivas cuando sea necesario. Estos análisis proporcionan una visión detallada de diversos aspectos del cuerpo, como niveles de glucosa, lípidos, función renal, entre otros.</div>
+                   
+                        <div className="text-700 text-2xl mb-5"> No te quedes con la duda e interpreta tus Análisis Clinícos ahora mismo</div>
 
                         
-                          <Button label="Registrarse" type="button" className="p-button-outlined" />
-                        
+                        <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  ' onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
+                 
+
+                  
+                          <a href="/pages/pantallainicio/crearcuenta">
+                          <Button label="Registrarse" type="button" className="p-button p-component font-bold p-button-outlined p-button-rounded" />
+
+</a>
 
                     </section>
                 </div>
@@ -179,7 +204,7 @@ export default function Home() {
                         <div></div>
 
                         <div>
-                            <Button label="Pruebalo" type="button" className="mr-3 p-button-raised" />
+                        <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  ' onClick={() => { router.push('/login') }}> Pruebalo</Button>
 
                         </div>
 
@@ -194,11 +219,50 @@ export default function Home() {
                 </div>
             </div>
 
-            <div>
+          <div>
+            
 
+
+            
+
+        
+    
+
+    
+      
+      
+        
+   
+   
+</div>
+    
+        
+
+<div className="grid grid-nogutter surface-0 text-800">
+
+<div className="col-12 md:col-6 overflow-hidden">
+                    <img src="/images/manzanilla.jpg" alt="hero-1" className="md:ml-auto block md:h-full" style={{ clipPath: 'polygon(0% 0, 100% 20%, 100% 100%, 0 80%)' }} />
+                </div>
+
+                <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+                    <section>
+                        
+                        
+
+                          <div className="surface-0 text-700 text-center">
+    <div className="text-pink-600 font-bold mb-3"><i className="pi pi-camera"></i>&nbsp;Impulsado por Inteligencia Artificial</div>
+    <div className="text-900 font-bold text-5xl mb-3">Identifica tu planta medicinal</div>
+    <div className="text-700 text-2xl mb-5">
+Utilizando inteligencia artificial, puedes reconocer tu planta y acceder a información sobre sus cuidados y recomendaciones específicas.</div>
+    <Button label="Identifica tu planta ahora mismo" icon="pi pi-camera" className="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap" />
+</div>
+    
+                    </section>
+                </div>
+                
             </div>
-    
-    
+
+
       
       <Footer/> 
     </>
