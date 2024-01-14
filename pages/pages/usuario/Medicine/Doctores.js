@@ -10,8 +10,6 @@ import { Table, TableCell, TableRow, TableBody, TableContainer, TableHeader } fr
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Image } from 'cloudinary-react';
-import Gallery from 'react-images';
-
 
 
 const Doctores = () => {
@@ -38,7 +36,7 @@ const Doctores = () => {
       imagen: "https://i.pinimg.com/564x/c1/01/a3/c101a3c795879ed7f846689ab1759df4.jpg",
     },
     {
-      nombre: "Dr. Ádrián Real Meza",
+      nombre: "Dr. Andrés Real Meza",
       especialidad: "Gastroenterólogo",
       status: "Médico",
       imagen: "https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg",
@@ -183,7 +181,7 @@ const Doctores = () => {
             <Dialog header={`Información de ${docInfo.nombre}`}
               visible={mostrarDialog} onHide={cerrarDialogo}
               footer={botonesDialogo} style={{ width: '35vw' }}>
-                <Gallery style={{borderRadious:'50%'}} src={`Información de ${docInfo.imagen}`} alt="avatar-f-2" className="h-10rem w-10rem border-rounder"/>
+                
                 <div className="flex flex-column align-items-center flex-or">
                 <Image style={{borderRadious:'50%'}} src={`Información de ${docInfo.imagen}`} alt="avatar-f-2" className="h-10rem w-10rem border-rounder" />
                   <img></img>
@@ -200,15 +198,15 @@ const Doctores = () => {
                 </div>
                
                 
-
-                <DataTable>
-                  <Column field="${docInfo.nombre}" header="Nombre del Médico" /> 
+                {/** <DataTable>
+                  <Column field='${docInfo.nombre}' header="Nombre del Médico" /> 
                   <Column header="Nombre del Médico">{docInfo.nombre} </Column>
                   <Column field="especialidad" header="Especialidad:" />
                   <Column field="estatus" header="Cédula Profesional:" />
 
 
-                </DataTable>
+                </DataTable> */}
+               
 
                 <div className="border-y-1 surface-border py-4 my-4">
                   <p className="font-medium text-lg text-700 mt-0">

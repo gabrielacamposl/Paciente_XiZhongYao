@@ -19,6 +19,8 @@ import { Calendar } from 'primereact/calendar';
 
 const perfilDoctor = () => {
 
+    const [selectedSlots, setSelectedSlots] = useState([]);
+
     const [horariosConsultas, setHorariosConsultas] = useState({
         lunes: ['9:00 AM', '11:00 AM', '2:00 PM', '4:00 PM', '6:00 PM'],
         martes: ['10:00 AM', '12:00 PM', '3:00 PM', '5:00 PM', '7:00 PM'],
@@ -27,7 +29,7 @@ const perfilDoctor = () => {
         viernes: ['10:30 AM', '12:30 PM', '3:30 PM', '5:30 PM', '7:30 PM'],
         sabado: ['8:30 AM', '10:45 AM', '1:45 PM', '3:45 PM', '5:45 PM'],
         domingo: ['11:00 AM', '1:00 PM', '4:00 PM', '6:00 PM', '8:00 PM'],
-      });
+    });
 
     const [date, setDate] = useState(null);
     const [selectedDay, setSelectedDay] = useState('');
@@ -50,13 +52,49 @@ const perfilDoctor = () => {
     };
 
     const handleSlotSelect = (slot) => {
+        const newSelectedSlots = [...selectedSlots];
+    
+        // Verifica si el horario ya está seleccionado
+        const index = newSelectedSlots.indexOf(slot);
+        if (index !== -1) {
+            // Si ya está seleccionado, quítalo
+            newSelectedSlots.splice(index, 1);
+        } else {
+            // Si no está seleccionado, agrégalo
+            newSelectedSlots.push(slot);
+        }
+    
+        setSelectedSlots(newSelectedSlots);
         setSelectedSlot(slot);
     };
+
+    const handleAgendarCita = () => {
+    // Realiza cualquier lógica adicional si es necesario antes de mostrar el mensaje de éxito
+
+    // Elimina los horarios seleccionados de la lista de horarios disponibles
+    const updatedHorarios = { ...horariosConsultas };
+    updatedHorarios[selectedDay.toLowerCase()] = horariosConsultas[selectedDay.toLowerCase()].filter(slot => !selectedSlots.includes(slot));
+    setHorariosConsultas(updatedHorarios);
+
+    // Muestra el mensaje de éxito
+    toast.current.show({
+        severity: 'success',
+        summary: 'Cita Agendada',
+        detail: 'Su cita se ha agendado con éxito.',
+        life: 3000,
+    });
+
+      // Redirige al usuario después de 5 segundos
+      setTimeout(() => {
+        // Cambia la ruta de la redirección según tu estructura de carpetas y archivos
+        window.location.href = '/pages/usuario/Medicine/citas';
+    }, 2000);
+};
 
     const availableSlots = selectedDay ? horariosConsultas[selectedDay.toLowerCase()] : [];
 
     //Lo que vamos a regresar
-      return (
+    return (
         <Layout title="Perfil doctor" description="Agenda la cita con el medico de tu preferencia">
             <Toast ref={toast} />
             <div className="grid">
@@ -68,19 +106,19 @@ const perfilDoctor = () => {
                                 <div className="card">
                                     <div className="col-12">
                                         <div className="col-3 flex align-items-center justify-content-center">
-                                        <Image src={`/images/docChat.png`} alt="Image" width="100" height="100" />
+                                            <Image src={`https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg`} alt="Image" width="100" height="100" />
                                         </div>
                                     </div>
-                                    <Card title="Dr. Lee Chin Juan" subTitle="Gastroenterologo" >
+                                    <Card title="Dr. Andrés Real Meza" subTitle="Gastroenterologo" >
 
                                         <p className="m-0">
                                             Especialista de confianza <br />
-                                            Los pacientes vuelven a su consulta de manera recurrente 
+                                            Los pacientes vuelven a su consulta de manera recurrente
                                             <br />
-                                            <b>Telefono movil: </b>5522925550
+                                            <b>Teléfono móvil: </b>55 22 92 55 50
                                             <br />
-                                            <b>Telefono consultorio: </b>58 84 93 18
-                                            <br/>
+                                            <b>Teléfono consultorio: </b>58 84 93 18
+                                            <br />
                                             <br />
                                             <b>Primera visita:</b> $500
                                             <br />
@@ -88,15 +126,13 @@ const perfilDoctor = () => {
 
                                         </p>
                                         <p className="m-0">
-                                            
-                                        </p>
-                                        <p className="m-0">
-                                            
-                                        </p>              
-                                        <p className="m-0">
-                                            
-                                        </p>
 
+                                        </p>
+                                        <p className="m-0">
+
+                                        </p>
+                                        <p className="m-0">
+                                        </p>
                                     </Card>
                                 </div>
                             </div>
@@ -110,19 +146,26 @@ const perfilDoctor = () => {
                                 <div className="card flex flex-wrap justify-content-center gap-3">
                                     {availableSlots.map((slot, index) => (
                                         <Button key={index} label={slot} severity="secondary" text raised onClick={() => handleSlotSelect(slot)}
-                                        className={selectedSlot === slot ? 'selected' : ''}/>
+                                            className={selectedSlot === slot ? 'selected' : ''} />
                                     ))}
                                 </div>
                                 <div className="align-items-right">
-                                    <Button label="Agendar cita" disabled={!selectedSlot || !date} />
-                                </div>  
+                                  
+                                    <Button
+                                        label="Agendar cita"
+                                        disabled={!selectedSlot || !date}
+                                        onClick={handleAgendarCita}
+                                    />
+
+
+                                </div>     <Toast ref={toast} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </Layout>
-      )
+    )
 }
 
 export default perfilDoctor

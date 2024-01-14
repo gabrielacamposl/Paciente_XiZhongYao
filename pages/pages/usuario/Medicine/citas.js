@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef  } from "react";
 import Layout from "@/layout/layout";
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
@@ -6,7 +6,8 @@ import { Tag } from 'primereact/tag';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { InputText } from 'primereact/inputtext';
 import { useRouter } from 'next/router';
-import { Table, TableCell, TableRow, TableBody, TableContainer, TableHeader } from "semantic-ui-react";
+import { Toast } from 'primereact/toast';
+
 
 const Citas = () => {
   const [citas, setCitas] = useState([]);
@@ -14,49 +15,38 @@ const Citas = () => {
   const [citaInfo, setCitaInfo] = useState({});
   const [mostrarDialog, setMostrarDialog] = useState(false);
   const [buscador, setBuscador] = useState('');
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
   const router = useRouter();
+  const toast = useRef(null);
 
   const datosCitas = [
     {
-      nombrePaciente: "Dr. Oder Olvera Nieto",
-      especialidad: "Gastroenterólogo",
-      status: "Cédula Prof. 11356624",
-      imagen: "https://i.pinimg.com/564x/3b/13/77/3b1377ac034dd38a6da6b2f72fef4909.jpg",
-      diaCita: "15/12/2023",
-      lugarCita: "Hospital XYZ, Ciudad ABC",
-      maps: "https://maps.app.goo.gl/dzCatb4agSt9W99YA",
+      nombrePaciente: "Dr. Andrés Real Meza",
+      especialidad: "Odontólogo",
+      status: "Cédula Prof. 1483528",
+      imagen: "https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg",
+      diaCita: "11/01/2024 ",
+      horaCita: "11:30 AM",
+      lugarCita: "Hospital Marcos Juárez, Ciudad de México. CP.54513",
+      maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
     },
     {
       nombrePaciente: "Dr. Antonio Dávalos Casas",
       especialidad: "Pediatra",
       status: "Cédula Prof. 11384568",
       imagen: "https://i.pinimg.com/564x/49/00/ff/4900ff8b887069809d7d03d31ffe9415.jpg",
-      diaCita: "15/12/2023",
-      lugarCita: "Hospital XYZ, Ciudad ABC",
+      diaCita: "7/02/2024 ",
+      horaCita: "1:30 PM",
+      lugarCita: "Hospital Las Lomas de Torres, Ciudad Satélite, CP.16513",
       maps: "https://maps.app.goo.gl/U72N2XPAQnjs47Uo7",
-    }, {
-      nombrePaciente: "Dr. Ádrián Real Meza",
-      especialidad: "Odontólogo",
-      status: "Cédula Prof. 1483528",
-      imagen: "https://i.pinimg.com/564x/85/d4/05/85d40586018b9c02f55a897a46ba8e95.jpg",
-      diaCita: "20/12/2023",
-      lugarCita: "Hospital XYZ, Ciudad ABC",
-      maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
-    }, {
-      nombrePaciente: "Dr. Pablo García Márquez",
-      especialidad: "Otorrinolaringólogo",
-      status: "Cédula Prof. 65453151",
-      imagen: "https://i.pinimg.com/236x/98/0b/26/980b2638500a0b04408fe5a8044aee73.jpg",
-      diaCita: "01/01/2024",
-      lugarCita: "Hospital XYZ, Ciudad ABC",
-      maps: "https://maps.app.goo.gl/DszCLmT9wznsVdY77",
     }, {
       nombrePaciente: "Dra. Alma Galván Torres",
       especialidad: "Neumólogo",
       status: "Cédula Prof. 55436875",
       imagen: "https://i.pinimg.com/236x/05/09/f2/0509f2d5f9f0a8f704e09b74f0cf185f.jpg",
-      diaCita: "28/12/2023",
-      lugarCita: "Hospital XYZ, Ciudad ABC",
+      diaCita: "26/01/2024  ",
+      horaCita: "5:00 PM",
+      lugarCita: "Hospital ShentiHao 15, Estado de México.",
       maps: "https://maps.app.goo.gl/dzCatb4agSt9W99YA",
     },
 
@@ -78,7 +68,7 @@ const Citas = () => {
       (cita) =>
         cita.nombrePaciente.toLowerCase().includes(busqueda) ||
         cita.especialidad.toLowerCase().includes(busqueda) ||
-        cita.status.toLowerCase().includes(busqueda) 
+        cita.status.toLowerCase().includes(busqueda)
     );
     setCitas(citasFiltradas);
   };
@@ -126,6 +116,11 @@ const Citas = () => {
               <label>{cita.diaCita}</label>
               <br />
               <br />
+              <i className="pi pi-clock"></i>
+              <label className="font-medium mb-2 " >  Hora de tu cita:  </label>
+              <label>{cita.horaCita}</label>
+              <br />
+              <br />
               <i className="pi pi-map-marker"></i>
               <label className="font-medium mb-2 " >  Lugar de tu cita: </label>
               <label>{cita.lugarCita}</label><br /> <br />
@@ -134,7 +129,7 @@ const Citas = () => {
               </a>
             </div>
             <div className="flex justify-content-center pt-4">
-              <Button label="Cancelar Cita" severity="dangerous" />
+            <Button label="Cancelar Cita" severity="dangerous" onClick={() => handleCancelarCita(cita)} />
 
             </div>
           </div>
@@ -165,6 +160,11 @@ const Citas = () => {
             <label>{cita.diaCita}</label>
             <br />
             <br />
+            <i className="pi pi-clock"></i>
+            <label className="font-medium mb-2 " >  Hora de tu cita:  </label>
+            <label>{cita.horaCita}</label>
+            <br />
+            <br />
             <i className="pi pi-map-marker"></i>
             <label className="font-medium mb-2 " >  Lugar de tu cita: </label>
             <label>{cita.lugarCita}</label><br /> <br />
@@ -173,7 +173,7 @@ const Citas = () => {
             </a>
           </div>
           <div className="flex justify-content-center pt-4">
-            <Button label="Cancelar Cita" severity="dangerous" />
+          <Button label="Cancelar Cita" severity="dangerous" onClick={() => handleCancelarCita(cita)} />
 
           </div>
         </div>
@@ -186,37 +186,67 @@ const Citas = () => {
     return layout === 'list' ? listItem(cita) : gridItem(cita);
   };
 
-  const dialogo = (cita) => {
+  const handleCancelarCita = (cita) => {
     setCitaInfo(cita);
     setMostrarDialog(true);
   };
 
-  const cerrarDialogo = () => {
+  const confirmarCancelarCita = () => {
+    // Perform cancellation logic here
+    // For example, update the status to "Cita cancelada"
+  
+    // Filtrar las citas y quitar la cita cancelada
+    const nuevasCitas = citas.filter(cita => cita !== citaInfo);
+  
+    // Actualizar el estado con las citas restantes
+    setCitas(nuevasCitas);
+  
+    // Show success toast message
+    toast.current.show({
+      severity: 'success',
+      summary: 'Cita Cancelada',
+      detail: 'Su cita se ha cancelado con éxito.',
+      life: 3000,
+    });
+  
+    // Close the confirmation dialog
     setMostrarDialog(false);
-    setCitaInfo({});
   };
 
-  const botonesDialogo = (
-    <Button label="Cerrar" icon="pi pi-times" onClick={cerrarDialogo} className="p-button-text" />
+  const cancelarCitaFooter = (
+    <>
+       <Button label="Aceptar" icon="pi pi-check" onClick={confirmarCancelarCita} autoFocus severity="success" />
+      <Button label="Cancelar" icon="pi pi-times" onClick={() => setMostrarDialog(false)} severity="dangerous" />
+     
+    </>
   );
+
+
 
   return (
     <Layout title="Mis Citas" description="Mis citas">
+     
       <div className="grid">
         <div className="col-12">
           <div className="card">
             <h2>Mis Citas</h2>
             <DataView value={citas} itemTemplate={itemTemplate} layout={layout} header={header()} />
-            <Dialog header={`Información de la Cita de ${citaInfo.nombrePaciente}`}
-              visible={mostrarDialog} onHide={cerrarDialogo}
-              footer={botonesDialogo} style={{ width: '35vw' }}>
+            <Dialog
+              header={`Confirmar cancelación de cita de ${citaInfo.nombrePaciente}`}
+              visible={mostrarDialog}
+              onHide={() => setMostrarDialog(false)}
+              footer={cancelarCitaFooter}
+              style={{ width: '35vw' }}
+            >
               <div className="mt-5">
-                <p className="my-2"><span className="font-semibold text-lg">Nombre del Paciente: </span>{citaInfo.nombrePaciente}</p>
+                <p className="my-2"><span className="font-semibold text-lg">Nombre del Doctor: </span>{citaInfo.nombrePaciente}</p>
                 <p className="my-2"><span className="font-semibold text-lg">Especialidad: </span>{citaInfo.especialidad}</p>
                 <p className="my-2"><span className="font-semibold text-lg">Día de la Cita: </span>{citaInfo.diaCita}</p>
+                <p className="my-2"><span className="font-semibold text-lg">Hora de la Cita: </span>{citaInfo.horaCita}</p>
                 <p className="my-2"><span className="font-semibold text-lg">Lugar de la Cita: </span>{citaInfo.lugarCita}</p>
               </div>
             </Dialog>
+            <Toast ref={toast} />
           </div>
         </div>
       </div>

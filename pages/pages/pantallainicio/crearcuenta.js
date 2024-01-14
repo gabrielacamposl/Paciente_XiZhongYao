@@ -17,10 +17,9 @@ import loto from '../../../imagenes/login/principal2.png';
 import back from '../../../public/images/background.gif';
 
 //--> Componentes propios
-import {
-  camposVacios, emailInvalido, exitoCuenta, passwordInvalido, passwordsInValidas, formatoNombre} from '@/components/mensajesNotificaciones/mensajes';
+import { camposVacios, emailInvalido, exitoCuenta, passwordInvalido, passwordsInValidas, formatoNombre} from '@/components/mensajesNotificaciones/mensajes';
 import { nuevoPaciente } from '@/components/mensajesNotificaciones/links';
-import { faArrowUpFromBracket, faBorderAll } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const CrearCuenta = () => {
@@ -149,7 +148,7 @@ const CrearCuenta = () => {
       console.log(error);
       setEstiloMensajeRespuesta('error')
       //setMensajeRespuesta(error.response.data.msg) ctrl+k
-      setMensajeRespuesta("Error")
+      setMensajeRespuesta("Este correo ya está en uso.")
       setTimeout(() => { setMensajeRespuesta('') }, 3000)
     }
   }
@@ -191,12 +190,9 @@ const CrearCuenta = () => {
           <ul className='list-none p-0 m-0 flex lg:align-items-center text-900 select-none flex-column lg:flex-row cursor-pointer lg:w-4'></ul>
         </div>
         <div className='flex justify-content-end lg:text-right lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0 lg:w-4'>
-          <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  '  onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
-         
+          <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  '  onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>        
         </div>
-
         </div>
-        
       </div>
     );
   }
@@ -300,7 +296,7 @@ const CrearCuenta = () => {
         <meta property="og:ttl" content="604800"></meta>
         <link rel="icon" href={`/XZY.ico`} type="image/x-icon"></link>
       </Head>
-     {/* <Image src={back} priority={true} className="z-0" style={{ width: '100vw', height: '100vh', filter: 'blur(1px)', position: 'absolute' }} alt="Mi imagen" />*/}
+   
      <div>
      <div className='px-4 py-8 md:px-6 lg:px-8' style={estiloDelFondo}>
         <div className='flex flex-wrap'>
@@ -428,86 +424,7 @@ const CrearCuenta = () => {
         </div>
       </div>
       
-      
-     {/**   <div className='flex h-screen  overflow-auto '>
-
-        <div className="z-1">
-          <div className={`scalein animation-duration-1000  xl:col-6 md:col-7 sm:col-offset-6 m-auto`}>
-            <div className='card col-12 justify-content-center'>
-
-              <Image src={loto} priority={false} style={{ width: '18%', height: '13%', marginLeft: '40%' }} alt="Mi imagen" />
-              <h1 className={`font-bold text-center`}>Crear cuenta</h1>
-
-              <div className="card-container mx-auto text-center ">
-                <div className='field'>
-                  <label htmlFor="nombreCompleto" className="block text-900  ">Nombre</label>
-                  <InputText
-                    id="nombreCompleto" placeholder="Nombre"
-                    className={`${estiloNombre} w-full p-3 md:w-25rem `}
-                    value={nombre} onChange={(e) => { setNombre(e.target.value) }} />
-                </div>
-                <div className='field'>
-                  <label htmlFor="apellido" className="block text-900  ">Apellidos</label>
-                  <InputText
-                    id="apellido" placeholder="Apellido(s)"
-                    className={`${estiloApellido} w-full p-3 md:w-25rem `}
-                    value={apellido} onChange={(e) => { setApellido(e.target.value) }} />
-                </div>
-                <div className='field'>
-                  <label htmlFor="email" className="block text-900 ">Correo electrónico</label>
-                  <InputText
-                    id="email" placeholder="Correo electrónico" className={`${estiloEmail} w-full p-3 md:w-25rem`}
-                    value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                </div>
-
-                <div className='field'>
-                  <label className="block text-900 ">Contraseña</label>
-                  <Password
-                    id="password" placeholder='Mínimo 6 caracteres' inputClassName={`w-full p-3 md:w-25rem`} className={`${estiloPassword}`}
-                    value={password} onChange={(e) => setPassword(e.target.value)}
-                    promptLabel="Crea tu contraseña" weakLabel="Debil" mediumLabel="Medio" strongLabel="Fuerte"
-                  />
-                </div>
-                <div className='field'>
-                  <label className="block text-900 ">Confirme su contraseña</label>
-                  <Password
-                    id="cpassword" placeholder='Repita su contraseña' inputClassName={`w-full p-3 md:w-25rem`} className={`${estiloConfirmPass} `}
-                    value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} feedback={false}
-                  />
-                </div>
-
-                {mensajeRespuesta && (
-                  <div className='mx-auto my-3' style={{ width: "600px", textAlign: "center" }}>
-                    <Message severity={estiloMensajeRespuesta} text={mensajeRespuesta} />
-                  </div>
-                )}
-
-                <div className='flex justify-content-center mb-2'>
-                  <Button label="Aceptar" className='mr-2 w-full p-3 md:w-13rem' onClick={crearUsuario} severity="success" size="large" />
-                  <Button label="Cancelar" className='mr-2 w-full p-3 md:w-13rem' onClick={cancelarCreacion} severity="danger" size="large" />
-
-                </div>
-              </div>
-
-              <div className='flex justify-content-center'>
-                <p className='mt-3'>¿Ya tienes una cuenta?</p>
-                <Button label="Iniciar Sesión" className='mx-2' link onClick={cancelarCreacion}
-                  icon="pi pi-angle-right" iconPos="right" />
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div>
-
-          <AppConfig />
-        </div>
-
-      </div>*/}
-   
+ 
 
       <Footer />
 

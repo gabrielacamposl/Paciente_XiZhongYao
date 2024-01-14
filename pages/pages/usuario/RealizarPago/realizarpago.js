@@ -16,6 +16,7 @@ import { Image } from 'cloudinary-react'
 import axios from "axios";
 import { consultarDir, consultarTarjeta, obtenerPedido, quitarPedido, pagarPedido } from "@/components/mensajesNotificaciones/links";
 
+
 const RealizarPago = () => {
 
   const router = useRouter();
@@ -25,7 +26,9 @@ const RealizarPago = () => {
   // }
 
   const [tarjeta, setTarjeta] = useState(0)
+  const [direccion, setDireccion] = useState(0)
   const [tarjetas, setTarjetas] = useState([])
+  const [direcciones, setDirecciones] = useState([])
   const [per, setPedido] = useState([])
   const [productos, setProductos] = useState([])
   const [costo, setcostoArticulos] = useState('')
@@ -37,7 +40,7 @@ const RealizarPago = () => {
 
   const [displayBasic, setDisplayBasic] = useState(false);
   const [displaycard, setDisplaycard] = useState(false);
-  //const [displayadd, setDisplayadd] = useState(false);
+  const [displayadd, setDisplayadd] = useState(false);
 
   const toast = useRef(null);
 
@@ -48,7 +51,7 @@ const RealizarPago = () => {
         Authorization: `Bearer ${token}`
       }
     }
-  /*  try {
+    try {
       const respuesta = await axios.get(consultarTarjeta, cabecera)
       if (respuesta.status === 200) {
         setTarjetas(respuesta.data)
@@ -63,12 +66,12 @@ const RealizarPago = () => {
           life: 3000,
         });
       }
-    }*/
+    }
   }
 
 
 
-/*  const consultarPedido = async () => {
+  const consultarPedido = async () => {
     const token = localStorage.getItem('token')
     const cabecera = {
       headers: {
@@ -81,11 +84,12 @@ const RealizarPago = () => {
         setPedido(respuesta.data)
         setProductos(respuesta.data.pedido.detallesPedido)
         setcostoArticulos(respuesta.data.pedido.costoArticulos)
-        setEnvio(respuesta.data.pedido.costoEnvio)
+      //  setEnvio(respuesta.data.pedido.costoEnvio)
         setDia(respuesta.data.pedido.fechaEntrega)
         setTotal(respuesta.data.pedido.costoTotal)
         setNombre(respuesta.data.pedido.nombrePedido)
         console.log(respuesta.data)
+
 
       }
     } catch (error) {
@@ -99,9 +103,8 @@ const RealizarPago = () => {
       }
     }
   }
-*/
 
-/*
+
   const eliminarPedido = async () => {
     const token = localStorage.getItem('token')
     const cabecera = {
@@ -129,10 +132,6 @@ const RealizarPago = () => {
     }
   }
 
-  */
- 
- 
-
 
   function buscarIndiceTarjeta(valorTarjeta) {
     const [numTarjeta, fechaVencimiento] = valorTarjeta.split(',');
@@ -147,55 +146,34 @@ const RealizarPago = () => {
 
 
   const Pagar = async () => {
-    if (tarjeta === 0 || direccion === 0 || selectedDate === '') {
+    if (tarjeta === 0 || selectedDate === '') {
       // Al menos uno de los campos no está seleccionado
       // Puedes mostrar una notificación o realizar alguna acción
       toast.current?.show({
         severity: 'info',
         summary: 'Información',
-        detail: "Todos los campos son obligatorios",
+        detail: "Todos los campos son obligatorios.",
         life: 3000,
       });
       return;
     }
 
-  
+    //const dirFinal = direcciones[buscarIndiceDireccion(direccion)] //Se obtiene objeto de la dirección seleccionada
     const cardFinal = tarjetas[buscarIndiceTarjeta(tarjeta)]
     // console.log(dia)
 
     const objetoEnviar = {
       nombrePedido: nombre,
-      metodoPago: 'Tarjeta de débito o crédito',
-    //  metodoEntrega: "En dirección indicada",
+      metodoPago: 'Tarjeta de débito o crédito.',
       fechaEntrega: date,
       tarjetaPedido: {
         numTarjeta_P: cardFinal.numTarjeta,
         fechaVencimiento_P: cardFinal.fechaVencimiento,
         cvv_P: cardFinal.cvv
 
-      },
-      destinoPedido: {
-      //  codigoPostal_P: dirFinal.codigoPostal,
-     //   colonia_P: dirFinal.colonia,
-      //  calle_P: dirFinal.calle,
-     //   numInt_P: dirFinal.numInt,
-       // numExt_P: dirFinal.numExt
       }
     }
 
-    //--> Aquí se envía el objeto a la base de datos
-    // console.log(tarjetas)
-    // console.log(nombre)
-    // console.log('Tarjeta de débito/crédito')
-    // console.log(selectedDate)
-    // console.log(cardFinal.numTarjeta)
-    // console.log(cardFinal.fechaVencimiento)
-    // console.log(cardFinal.cvv)
-    // console.log(dirFinal.codigoPostal)
-    // console.log(dirFinal.colonia)
-    // console.log(dirFinal.calle)
-    // console.log(dirFinal.numExt)
-    // console.log(dirFinal.numInt)
 
     const token = localStorage.getItem('token')
     const cabecera = {
@@ -204,7 +182,7 @@ const RealizarPago = () => {
       }
     }
     console.log("Pagando...")
-   /* try {
+    try {
       const respuesta = await axios.post(pagarPedido, objetoEnviar, cabecera)
       if (respuesta.status === 200) {
         // router.push('/pages/dashboard')
@@ -212,18 +190,9 @@ const RealizarPago = () => {
         setTimeout(() => {
           router.push('/pages/usuario/compras')
         }, 3000);
-        // if (toast.current) {
-        //   router.push('/pages/usuario/carrito')
-        //   setTarjeta(0)
-        //   setDireccion(0)
-        //   setcostoArticulos('')
-        //   setEnvio('')
-        //   setTotal('')
-        //   setNombre('')
-        //   setDia('')
-        // }
+    
       }
-    } catch (error) { toast.current.show({ severity: 'info', summary: 'Información', detail: error.response.data.msg, life: 3000, }) }*/
+    } catch (error) { toast.current.show({ severity: 'info', summary: 'Información', detail: error.response.data.msg, life: 3000, }) }
   };
 
 
@@ -247,23 +216,15 @@ const RealizarPago = () => {
   const formattedMaxDate = maxDate.toLocaleDateString('es-ES', options).replace(/\//g, '-');
 
 
-  ///////////////////////////////////////////////////////
-
   const onClick = () => {
     setDisplayBasic(true);
 
   };
-
   const onClick2 = () => {
     setDisplaycard(true);
 
   };
 
-
-  /*const onClick3 = () => {
-    setDisplayadd(true);
-
-  };*/
   const onHide = () => {
     setDisplayBasic(false);
 
@@ -274,23 +235,8 @@ const RealizarPago = () => {
 
   };
 
- /* const onHide3 = () => {
-    setDisplayadd(false);
 
-  };*/
-
-
-
-  /*CARRUSEL DEL APARTADO DE VER */
-  // const responsiveOptions = [
-  //   { breakpoint: '1199px', numVisible: 1, numScroll: 1 },
-  //   { breakpoint: '991px', numVisible: 2, numScroll: 1 },
-  //   { breakpoint: '767px', numVisible: 1, numScroll: 1 }
-  // ];
-
-
-
-  const productTemplate = (temporada) => {
+ /* const productTemplate = (temporada) => {
     return (
       <div className=" surface-border border-round m-1 text-center py-5 ">
         <div className="">
@@ -311,7 +257,7 @@ const RealizarPago = () => {
         </div>
       </div>
     );
-  };
+  };*/
 
   /*La variable SelectedDate determina la fecha elegida */
   const [selectedDate, setSelectedDate] = useState(formattedMaxDate);
@@ -346,18 +292,12 @@ const RealizarPago = () => {
     );
   };
 
- /* const renderFooter3 = () => {
-    return (
-      <div className="dialog-footer">
-        <Button label="Cerrar" onClick={onHide3} />
-      </div>
-    );
-  };*/
+
 
   return (
     <Layout
       title="Pagar"
-      description="Soltar el cash"
+      description="Pago del pedido"
     >
       <div className="grid">
         <Toast ref={toast} />
@@ -378,10 +318,9 @@ const RealizarPago = () => {
                     <RegistrarTarjeta />
                   </Dialog>
 
-                </div>  
+                </div>
               </div>
 
- 
               <div className='card'>
                 <h4>Fecha de entrega</h4>
                 <div className="gap-3">
@@ -409,10 +348,7 @@ const RealizarPago = () => {
 
                 </div>
               </div>
-
-
             </div>
-
 
             <div className='lg:col-5 md:col-12'>
 
@@ -435,6 +371,8 @@ const RealizarPago = () => {
                   <Carousel value={productos} numVisible={3} numScroll={3} itemTemplate={productTemplate} className="custom-carousel" circular />
                 </Dialog>
 
+
+
                 <p><span className='font-bold'>Pedido:</span> #{nombre}</p>
                 <div className='flex'>
                   <p><span className='font-bold'>Contenido:</span> </p>
@@ -443,12 +381,17 @@ const RealizarPago = () => {
 
                 <p> <span className='font-bold '>Fecha de entrega: </span> {selectedDate}</p>
                 <p> <span className='font-bold '>Costo: </span>${costo.toLocaleString()}</p>
-                <p> <span className='font-bold '>Envio: </span> ${envio.toLocaleString()}</p>
                 <p className='text-center  text-2xl'> <span className='font-bold '>Total: </span> ${total.toLocaleString()}</p>
+
+
+
 
               </div>
 
             </div>
+
+
+
           </div>
 
         </div>

@@ -33,15 +33,16 @@ const AppMenu = () => {
     {
       label: 'Interpretaciones Clínicas',
       items: [
-        { label: 'Interpretar Análisis', icon: 'pi pi-fw pi-shield', to: '/pages/usuario/Medicine/analisisClinicos' },
-        { label: 'Ver Historial', icon: 'pi pi-fw pi-clock', to: '/pages/usuario/Medicine/historialAnali' },
+        { label: 'Interpretar Análisis', icon: 'pi pi-fw pi-shield', to: '/pages/usuario/Medicine/analisCliFront' },
+        { label: 'Remedios Naturales', icon: 'pi pi-fw pi-book', to: '/pages/usuario/Medicine/Recomendaciones' },
+      
       ]
     },
     
      {
       label: 'Indentifación de Flora',
       items: [
-        { label: 'Identifica tu Planta', icon: 'pi pi-fw pi-search', to: '/pages/usuario/IAPlantas' }
+        { label: 'Identifica tu Planta', icon: 'pi pi-fw pi-search', to: 'http://localhost:5000/predicciones' }
       ]
     },
     {
@@ -50,6 +51,12 @@ const AppMenu = () => {
         { label: 'Ver Productos', icon: 'pi pi-fw pi-shopping-bag ', to: '/pages/usuario/Ecommerce/productos' },
         { label: 'Carrito', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/usuario/Ecommerce/carrito' },
         { label: 'Mis Compras', icon: 'pi pi-fw pi-heart', to: '/pages/usuario/Ecommerce/miscompras' },
+      ]
+    },  {
+      label: 'Check',
+      items: [
+        { label: 'Ver Productos', icon: 'pi pi-fw pi-shopping-bag ', to: '/pages/catalogos/plantasMedicinales' },
+
       ]
     },
     
