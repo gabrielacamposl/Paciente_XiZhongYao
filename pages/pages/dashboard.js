@@ -25,7 +25,7 @@ const Dashboard = () => {
          </div>
          <div className='flex justify-content-end lg:text-right lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0 lg:w-4'>
            <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  ' onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
-
+          
          </div>
        </div>
      </div>
@@ -133,8 +133,7 @@ const Dashboard = () => {
 
   return (
     <Layout title="Inicio" description="Página principal de XiZhongYao" >
-    
-
+  
 
       <div>
         <div className='px-4 py-8 md:px-8 lg:px-8' style={estiloDelFondo}>
@@ -142,8 +141,6 @@ const Dashboard = () => {
             <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center">
               <section>
       
-            
-
                 <div className="text-700 text-2xl mb-5">
                   <h4  style={ estiloTexto}>Interpretar los análisis clínicos es crucial para comprender el estado de salud personal y tomar medidas preventivas o correctivas cuando sea necesario. Estos análisis proporcionan una visión detallada de diversos aspectos del cuerpo, como niveles de glucosa, lípidos,  entre otros.</h4></div>
                 <div className="text-700 text-1xl mb-5"> ¡No te quedes con la duda!,  interpreta tus Análisis Clínicos ahora mismo.</div>

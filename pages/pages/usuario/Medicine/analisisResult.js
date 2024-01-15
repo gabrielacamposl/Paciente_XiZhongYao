@@ -22,17 +22,17 @@ import { useRouter } from 'next/router';
 const analisisResult = () => {
 
   const [datosUsuario, setDatosUsuario] = useState({
-    Glucosa: '60',
-    Urea: '54',
-    Creatinina: '0.8',
-    'Ácido Úrico': '8.5',
+    Glucosa: '85',
+    Urea: '15',
+    Creatinina: '0.5',
+    'Ácido Úrico': '1.7',
     'Colesterol Total': '200',
     'Colesterol Ldl': '89',
-    'Colesterol Hdl': '160',
-    Trigliceridos: '150',
+    'Colesterol Hdl': '85',
+    Trigliceridos: '77',
     'Bilirrubina Total': '1.3',
-    'TGO (Transaminasa Glutámico Oxalacética)': '7',
-    'TGP (Transaminasa Glutámico Pirúvica)': '6',
+    'TGO (Transaminasa Glutámico Oxalacética)': '6',
+    'TGP (Transaminasa Glutámico Pirúvica)': '57',
     'GGT (Gamma-Glutamil Transferasa)': '35',
   });
 

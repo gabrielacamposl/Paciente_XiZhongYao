@@ -23,10 +23,17 @@ const Doctores = () => {
 
     // Datos de ejemplo para los doctores
     const datosDoctores = [
-
-       
         {
-            nombre: "Dr. Wang Hedi",
+            nombre: "Dr. Marco Antonio García Olvera",
+            especialidad: "Nefrólogo",
+            status: "50967720",
+            imagen: "https://i.pinimg.com/564x/94/f8/14/94f81441022f70fca9c61aa1ee7b7da8.jpg",
+            dirección: "Centro Médico Serenidad, Calle Esperanza, Nº 123,  Colonia Tranquilidad, Edo. Méx.",
+            maps: "https://maps.app.goo.gl/iznrCk5NRyKYnKsF9",
+            descripcion: "Soy un nefrólogo reconocido con una trayectoria dedicada al estudio y tratamiento de enfermedades renales. Mi compromiso con la excelencia clínica y la investigación ha contribuido al avance del campo. He colaborado en estudios clínicos, compartido conocimientos con colegas y estudiantes, y mantenido un enfoque centrado en el paciente. Mi objetivo continuo es mejorar la salud renal y la calidad de vida de mis pacientes, siempre buscando innovar en la atención médica."
+        },
+        {
+            nombre: "Dr. Ying Wang",
             especialidad: "Otorrinolaringólogo",
             status: "15967720",
             imagen: "https://i.pinimg.com/564x/23/e7/c0/23e7c0fa712d53620e7925e7fb532791.jpg",
@@ -38,7 +45,7 @@ const Doctores = () => {
             nombre: "Dr. Antonio Dávalos Casas",
             especialidad: "Pediatra",
             status: "15837720",
-            imagen: "https://i.pinimg.com/564x/c1/01/a3/c101a3c795879ed7f846689ab1759df4.jpg",
+            imagen: "https://i.pinimg.com/564x/96/42/16/964216a81b96ee2385d385a018930a0d.jpg",
             dirección: "Clínica Aurora, Plaza Bienestar, Nº 789, Urbanización Saludable, Villa Sanitaria",
             maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
             descripcion: "Soy un pediatra reconocido comprometido con la salud infantil. Mi carrera se ha centrado en brindar atención médica de alta calidad, desde el tratamiento de enfermedades pediátricas comunes hasta casos más complejos. Además, he participado en programas de prevención y educación para padres. Mi dedicación a la formación médica incluye la enseñanza a estudiantes y residentes, contribuyendo al desarrollo de profesionales comprometidos con el bienestar de los niños. Mi objetivo es continuar promoviendo el cuidado integral de los niños para garantizar un inicio saludable en cada etapa de sus vidas."
@@ -47,7 +54,7 @@ const Doctores = () => {
             nombre: "Dr. Andrés Real Meza",
             especialidad: "Ginecólogo",
             status: "57867720",
-            imagen: "https://i.pinimg.com/564x/52/a6/3d/52a63dab2ce268aea29aec113e731d0d.jpg",
+            imagen: "https://i.pinimg.com/564x/e7/c8/6b/e7c86bb88d06d4decda94e4e5d435754.jpg",
             dirección: "Hospital Harmonía, Calle Bienestar, Nº 456, Distrito Sano, Pueblo Saludable",
             maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
             descripcion: "Como ginecólogo reconocido, me especializo en brindar atención integral a la salud de las mujeres. Mi trayectoria destaca por la excelencia clínica, la participación en investigaciones y estudios clínicos, así como por mi compromiso como educador. Mi objetivo es ofrecer atención de calidad, centrada en la paciente, y contribuir al avance constante de la salud ginecológica."
@@ -56,7 +63,7 @@ const Doctores = () => {
             nombre: "Dr. Pablo García Márquez",
             especialidad: "Gastroenterólogo",
             status: "11305820",
-            imagen: "https://i.pinimg.com/564x/ce/a3/9f/cea39f81156958ac9491528d9e9ff0be.jpg",
+            imagen: "https://i.pinimg.com/564x/00/f0/7a/00f07a1939f2834843c8ce39c7e672c6.jpg",
             dirección: "Hospital Marcos Juárez, Ciudad de México. CP.54513",
             maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
             descripcion: "Como gastroenterólogo destacado, me he dedicado a sobresalir en el diagnóstico y tratamiento de trastornos gastrointestinales. Mi compromiso con la excelencia médica y la participación activa en investigaciones ha contribuido al avance del campo. Priorizo un enfoque centrado en el paciente, brindando cuidados personalizados. Con una sólida reputación, mi objetivo continuo es mejorar la salud gastrointestinal y la calidad de vida de mis pacientes."
@@ -65,7 +72,7 @@ const Doctores = () => {
             nombre: "Dra. Alma Galván Torres",
             especialidad: "Cardióloga",
             status: "52517720",
-            imagen: "https://i.pinimg.com/564x/2e/30/d9/2e30d9994b7998c891e1ecc20631f3c1.jpg",
+            imagen: "https://i.pinimg.com/564x/dc/97/8f/dc978fd33b17ca573dfc100579e3b693.jpg",
             dirección: "Centro Médico Elysium, Avenida Bienestar, Nº 789, Colina Salud, Ciudad Armonía",
             maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
             descripcion: "Soy una cardióloga reconocida con una destacada carrera en el ámbito de la cardiología. Mi dedicación a la investigación ha contribuido al avance en el diagnóstico y tratamiento de enfermedades cardiovasculares. Mi experiencia abarca desde casos comunes hasta situaciones clínicas complejas. Además, he compartido mi conocimiento como educadora y mantengo un enfoque integral y centrado en el paciente para proporcionar atención médica de calidad."

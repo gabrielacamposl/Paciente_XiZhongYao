@@ -4,27 +4,29 @@ import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
 import { Tag } from 'primereact/tag';
+import { useRouter } from "next/router";
 
 
 const CarritoCompras = () => {
 
+  const router = useRouter()
   const [flores, setFlores] = useState([])
 
   useEffect(() => {
     const datosFlores = [
       
         {
-            nombre: 'Concha Nácar',
+            nombre: 'Concha_Nacar',
             descripcion: 'La Crema de Concha Nácar es conocida por sus propiedades regeneradoras y nutritivas para la piel. El extracto de concha nácar es apreciado por sus beneficios para mejorar la elasticidad y suavidad de la piel. Esta crema es ideal para el cuidado diario, proporcionando hidratación y ayudando a mantener una piel saludable y radiante.',
             precio: '45.50',
             categoria: 'Ungüentos',
             status: 'Pocos',
-            cantidad:3,
+            cantidad:1,
             imagen:  '/images/plantas/conchanacar.jpg',
               
           },
           {
-            nombre: 'Crema de Naranja',
+            nombre: 'Crema_de_Naranja',
             descripcion: 'La Crema de Naranja es una mezcla exquisita de ingredientes que incluye extractos naturales de naranja. Esta crema proporciona una hidratación profunda y deja la piel con un aroma fresco y cítrico. Con propiedades revitalizantes, es perfecta para nutrir la piel y brindarle un aspecto radiante y saludable. ',
             precio: '56.50',
             categoria: 'Ungüentos',
@@ -34,11 +36,11 @@ const CarritoCompras = () => {
               
           }, 
           {
-            nombre: 'Aceites Capilares',
+            nombre: 'Aceites_Capilares',
             descripcion: ' Los Aceites Capilares son una combinación única de aceites naturales seleccionados para nutrir y fortalecer el cabello. Esta fórmula ha sido diseñada para proporcionar beneficios hidratantes, mejorar la salud del cuero cabelludo y dejar el cabello con un brillo saludable. Un tratamiento capilar indulgente para revitalizar tu melena. ',
             precio: '90.50',
             categoria: 'Aceites',
-            cantidad: 2,
+            cantidad: 1,
             status: 'Disponible',
             imagen:  '/images/plantas/Med2.jpg',
               
@@ -149,7 +151,7 @@ const CarritoCompras = () => {
                 <h2>Total: ${getTotalPrice()}</h2>
               </div>
               <div className="flex align-items-left">
-                <Button label="Pagar" />
+                <Button label="Pagar"  onClick={()=>  router.push('/pages/usuario/Ecommerce/pago')}/>
               </div>
             </div>
           </div>

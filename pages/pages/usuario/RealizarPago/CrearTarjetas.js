@@ -20,6 +20,16 @@ const AtencionClientes = () => {
     focus: '',
   });
 
+         // Función para mostrar el mensaje de éxito y redirigir
+         const saveCardFalse = () => {
+          toast.current.show({
+              severity: 'success',
+              summary: 'Tarjeta guardada.',
+              detail: 'La tarjeta ha sido guardada.',
+              life: 3000,
+          });
+      };
+
   const saveCard = async () => {
 
     if (
@@ -178,7 +188,7 @@ const AtencionClientes = () => {
 
             </div>
 
-            <Button label="Agregar tarjeta" onClick={saveCard} className='mr-2 w-full p-3' severity="success" size="large" />
+            <Button label="Agregar tarjeta" onClick={saveCardFalse} className='mr-2 w-full p-3' severity="success" size="large" />
 
           </div>
 

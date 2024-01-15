@@ -15,6 +15,10 @@ import { Image } from 'cloudinary-react'
 import { visualizarCarrito, incrementarProducto, decrementarProducto, eliminarProducto } from "@/components/mensajesNotificaciones/links";
 
 const CarritoCompras = () => {
+
+  const [nombreEliminar, setNombreEliminar] = useState('')
+  
+
   //--> Redireccionar
   const router = useRouter();
 
@@ -35,18 +39,10 @@ const CarritoCompras = () => {
   //->FUNCIONES DE LA CONECCION CON LA DB
 
   //->VER CARRITO
-  // useEffect(() => {
-
-  //   axios.get(visualizarCarrito, cabecera).then(res => { setFlores(res.data.carrito); })
-
-  //     .catch(error => {
-
-  //     });
-  // }, [flores])
 
   const consultarCarrito = async () => {
     console.log("Consultando carrito")
- /*   try {
+    try {
       const respuesta = await axios.get(visualizarCarrito, cabecera)
       if (respuesta.status === 200) {
         setFlores(respuesta.data.carrito)
@@ -60,7 +56,7 @@ const CarritoCompras = () => {
         detail: error.response.data.msg,
         life: 3000,
       });
-    }*/
+    }
   }
 
 
@@ -69,21 +65,24 @@ const CarritoCompras = () => {
   }, [])
 
 
-  // useEffect(() => {
-  //   console.log(flores)
-  // }, [flores])
+
 
   //->DECREMENTAR
+ 
 
-  const decrementarProduct = async (producto) => {
+  const decrementarProduct = async () => {
     const token = localStorage.getItem('token')
     const cabecera = {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }
- /*   try {
-      const respuesta = await axios.post(decrementarProducto, { nombreProducto: producto.producto_C }, cabecera)
+  
+    const newUrl = `${decrementarProducto}${nombreEliminar}`
+      console.log(newUrl)
+    try {
+     // const respuesta = await axios.delete(decrementarProducto, { nombreProducto: producto.producto_C }, cabecera)
+     const respuesta = await axios.delete(newUrl, cabecera)
       if (respuesta.status === 200) {
         console.log("Reducido")
       }
@@ -98,9 +97,8 @@ const CarritoCompras = () => {
         });
       }
 
-    }
-    */
 
+    }
   }
 
 
@@ -113,7 +111,7 @@ const CarritoCompras = () => {
       }
     }
     try {
-      const respuesta = await axios.post(incrementarProducto, { nombreProducto: producto.producto_C }, cabecera)
+      const respuesta = await axios.put(incrementarProducto, { nombreProducto: producto.producto_C }, cabecera)
       if (respuesta.status === 200) {
         console.log("aumentado")
       }
@@ -131,7 +129,6 @@ const CarritoCompras = () => {
     }
   }
 
-
   //->Eliminar producto
   const eliminarProduct = async (producto) => {
     //--> Paramatros de la cabecera
@@ -142,11 +139,12 @@ const CarritoCompras = () => {
       }
     }
     //--> Envio de la peticion
-    
-    /*try {
+    const newUrl = `${eliminarProducto}${nombreEliminar}`
+    console.log(newUrl)
+    try {
       const confirmacion = window.confirm('¿Está seguro de que deseas eliminar este artículo del carrito?');
       if (confirmacion) {
-        const respuesta = await axios.post(eliminarProducto, { nombreProducto: producto.producto_C }, cabecera);
+        const respuesta = await axios.delete(eliminarProducto, { nombreProducto: producto.producto_C }, cabecera);
         console.log(respuesta.status);
         if (respuesta.status === 200) {
           toast.current.show({
@@ -160,25 +158,10 @@ const CarritoCompras = () => {
       }
     } catch (error) {
       console.log(error);
-    }*/
+    }
   
 
-    // try {
-    //   const respuesta = await axios.post(eliminarProducto, { nombreProducto: producto.producto_C }, cabecera)
-    //   console.log(respuesta.status)
-    //   if (respuesta.status === 200) {
-    //     toast.current.show({
-    //       severity: 'success',
-    //       summary: 'Mensaje de éxito',
-    //       detail: `${respuesta.data.msg}`,
-    //       life: 3000,
-    //     });
-    //   }
-    //   consultarCarrito()
-    // } catch (error) {
-    //   console.log(error)
-    // }
-
+ 
   }
 
 
@@ -225,7 +208,7 @@ const CarritoCompras = () => {
         <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
 
           <Image
-            cloudName="dp6uo7fsz" publicId={flor.img_C}
+            cloudName="dluhoni1n" publicId={flor.img_C}
             className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
             style={{ width: '200px', height: '200px' }}
           />
@@ -255,7 +238,8 @@ const CarritoCompras = () => {
                 {flor.precioProducto === flor.precioDescuento && (
                   <span className="text-3xl font-semibold">${(flor.totalParcial_C).toFixed(2)}</span>
                 )}
-                
+
+
               </span>
               <Button
                 onClick={() => { eliminarProduct(flor); }}

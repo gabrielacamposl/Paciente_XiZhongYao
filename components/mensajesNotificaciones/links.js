@@ -4,7 +4,7 @@ export const validarToken = "http://localhost:4444/api/pacientes/confirmar/"
 
 //--> Iniciar sesion
 export const iniciarSesion = "http://localhost:4444/api/pacientes/login"
-// export const iniciarSesion = "http://localhost:4444/api/administradores/login"
+
 
 //--> Resetear password
 export const resetearPassword = "http://localhost:4444/api/pacientes/olvide-password"
@@ -12,7 +12,7 @@ export const tokenResetearPassword = "http://localhost:4444/api/pacientes/olvide
 export const cambiarPassword = "http://localhost:4444/api/pacientes/olvide-password/"
 
 // --> Catalogo Medicinal
-export const mostrarMedicinaNatural = "http://localhost:4444/api/productos/verProductos"
+export const mostrarMedicinaNatural = "http://localhost:4444/api/pacientes/main/ver-productos"
 
 //----DATOS USUARIO-------
 // --> Cambiar nombre
@@ -50,7 +50,7 @@ export const consultarDir = "http://localhost:4444/api/pacientes/interaccionPed/
 
 
 //->Realizar pago
-export const obtenerPedido = "http://localhost:4444/api/pedidos"
+export const obtenerPedido = "http://localhost:4444/api/pacientes/main/pedido/visualizar-pedido"
 export const quitarPedido = "http://localhost:4444/api/pedidos/cancelarPedido"
 export const pagarPedido = "http://localhost:4444/api/pedidos/main/pagar-pedido"
 

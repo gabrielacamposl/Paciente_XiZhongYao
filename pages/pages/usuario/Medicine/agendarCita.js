@@ -22,13 +22,13 @@ const perfilDoctor = () => {
     const [selectedSlots, setSelectedSlots] = useState([]);
 
     const [horariosConsultas, setHorariosConsultas] = useState({
-        lunes: ['9:00 AM', '11:00 AM', '2:00 PM', '4:00 PM', '6:00 PM'],
-        martes: ['10:00 AM', '12:00 PM', '3:00 PM', '5:00 PM', '7:00 PM'],
-        miercoles: ['8:00 AM', '10:30 AM', '1:30 PM', '3:30 PM', '5:30 PM'],
-        jueves: ['9:30 AM', '11:30 AM', '2:30 PM', '4:30 PM', '6:30 PM'],
-        viernes: ['10:30 AM', '12:30 PM', '3:30 PM', '5:30 PM', '7:30 PM'],
-        sabado: ['8:30 AM', '10:45 AM', '1:45 PM', '3:45 PM', '5:45 PM'],
-        domingo: ['11:00 AM', '1:00 PM', '4:00 PM', '6:00 PM', '8:00 PM'],
+        lunes: [''],
+        martes: [''],
+        miercoles: [ '14:20 AM', '15:45 PM'],
+        jueves: ['9:00 AM',  '12:30 PM'],
+        viernes: [''],
+        sabado: [''],
+        domingo: [''],
     });
 
     const [date, setDate] = useState(null);
@@ -87,7 +87,7 @@ const perfilDoctor = () => {
       // Redirige al usuario después de 5 segundos
       setTimeout(() => {
         // Cambia la ruta de la redirección según tu estructura de carpetas y archivos
-        window.location.href = '/pages/usuario/Medicine/citas';
+        window.location.href = '/pages/usuario/Medicine/citasPorConfirmar';
     }, 2000);
 };
 
@@ -106,24 +106,20 @@ const perfilDoctor = () => {
                                 <div className="card">
                                     <div className="col-12">
                                         <div className="col-3 flex align-items-center justify-content-center">
-                                            <Image src={`https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg`} alt="Image" width="100" height="100" />
+                                            <Image src={`https://i.pinimg.com/564x/94/f8/14/94f81441022f70fca9c61aa1ee7b7da8.jpg`} alt="Image" width="110px" height="95px" />
                                         </div>
                                     </div>
-                                    <Card title="Dr. Andrés Real Meza" subTitle="Gastroenterologo" >
+                                    <Card title="Dr. Marco Antonio García Olvera" subTitle="Nefrólogo" >
 
                                         <p className="m-0">
                                             Especialista de confianza <br />
                                             Los pacientes vuelven a su consulta de manera recurrente
                                             <br />
-                                            <b>Teléfono móvil: </b>55 22 92 55 50
                                             <br />
-                                            <b>Teléfono consultorio: </b>58 84 93 18
+                                            <b>Teléfono móvil: </b>55 14 75 22 30
                                             <br />
-                                            <br />
-                                            <b>Primera visita:</b> $500
-                                            <br />
-                                            <b>Consulta:</b> $350
-
+                                           
+                                       
                                         </p>
                                         <p className="m-0">
 

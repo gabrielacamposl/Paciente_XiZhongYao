@@ -37,28 +37,22 @@ const Perfil = () => {
                 <Button label="Inicio" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/dashboard') }} />
               </div>
 
-              <div className="flex align-items-center flex-wrap my-2">
-                <i className="pi pi-user-edit flex align-items-center justify-content-center m-2" style={{ fontSize: '2rem' }}></i>
-                <Button label="Modificar Perfil" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/PerfilUser/modifUser') }} />
-              </div>
+           
 
               <div className="flex align-items-center flex-wrap my-2">
                 <i className="pi pi-shopping-bag flex align-items-center justify-content-center m-2" style={{ fontSize: '2rem' }}></i>
-                <Button label="Mis compras" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/Ecommerce/miscompras ') }} />
+                <Button label="Mis compras" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/Ecommerce/verPedidos ') }} />
               </div>
 
-              <div className="flex align-items-center flex-wrap my-2">
-                <i className="pi pi-file flex align-items-center justify-content-center m-2" style={{ fontSize: '2rem' }}></i>
-                <Button label="Mis Análisis" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/Medicine/analisisResult') }} />
-              </div>
+              
               <div className="flex align-items-center flex-wrap my-2">
                 <i className="pi pi-calendar-times flex align-items-center justify-content-center m-2" style={{ fontSize: '2rem' }}></i>
                 <Button label="Mis Citas" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/Medicine/citas') }} />
               </div>
           
               <div className="flex align-items-center flex-wrap my-2">
-                <i className="pi pi-user flex align-items-center justify-content-center m-2" style={{ fontSize: '2rem' }} ></i>
-                <Button label="Mi cuenta" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/PerfilUser/miCuenta') }} />
+                <i className="pi  pi-credit-card flex align-items-center justify-content-center m-2" style={{ fontSize: '2rem' }} ></i>
+                <Button label="Ver Mis tarjetas" text className="flex align-items-center justify-content-center m-2" onClick={() => { router.push('/pages/usuario/modifDatos/modifTarjetas') }} />
 
               </div>
             

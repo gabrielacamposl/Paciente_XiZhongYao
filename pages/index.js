@@ -41,8 +41,9 @@ export default function Home() {
             <ul className='list-none p-0 m-0 flex lg:align-items-center text-900 select-none flex-column lg:flex-row cursor-pointer lg:w-4'></ul>
           </div>
           <div className='flex justify-content-end lg:text-right lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0 lg:w-4'>
+          <Button className=' p-button p-component font-bold p-button-outlined p-button-rounded ' onClick={() => { router.push('http://localhost:3002/') }}>  ¿Eres Doctor? </Button>
             <Button className=' p-button p-component font-bold p-button-outolined p-button-rounded  ' onClick={() => { router.push('/login') }}> Iniciar Sesión</Button>
-
+            
           </div>
         </div>
       </div>

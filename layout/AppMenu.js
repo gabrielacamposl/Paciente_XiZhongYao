@@ -26,7 +26,7 @@ const AppMenu = () => {
     {
       label: 'Servicios Médicos',
       items: [
-        { label: 'Nuestros Profesionales', icon: 'pi pi-fw pi-users', to: '/pages/usuario/Medicine/Doctores' },
+        { label: 'Nuestros Profesionales', icon: 'pi pi-fw pi-users', to: '/pages/usuario/Medicine/Doctores_' },
         { label: 'Mis Citas', icon: 'pi pi-fw pi-calendar-times', to: '/pages/usuario/Medicine/citas' }
       ]
     },
@@ -48,17 +48,11 @@ const AppMenu = () => {
     {
       label: 'Tienda Medicinal',
       items: [
-        { label: 'Ver Productos', icon: 'pi pi-fw pi-shopping-bag ', to: '/pages/usuario/Ecommerce/productos' },
-        { label: 'Carrito', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/usuario/Ecommerce/carrito' },
-        { label: 'Mis Compras', icon: 'pi pi-fw pi-heart', to: '/pages/usuario/Ecommerce/miscompras' },
-      ]
-    },  {
-      label: 'Check',
-      items: [
         { label: 'Ver Productos', icon: 'pi pi-fw pi-shopping-bag ', to: '/pages/catalogos/plantasMedicinales' },
-
+        { label: 'Carrito', icon: 'pi pi-fw pi-shopping-cart', to: '/pages/usuario/Ecommerce/carritoCompras' },
+        { label: 'Mis Compras', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/usuario/Ecommerce/verPedidos' },
       ]
-    },
+    },  
     
 
   ];

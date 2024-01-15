@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Layout from "@/layout/layout"
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
@@ -6,14 +6,18 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
  import { Rating } from 'primereact/rating';
+ import { Toast } from "primereact/toast";
 
 const CatalogoFlores = () => {
   //----------------| Lista de variables |----------------
   const [flores, setFlores] = useState([])
   const [layout, setLayout] = useState('grid');
+ 
   //-->Detalles de flor
   const [detallesFlor, setDetallesFlor] = useState({})
   const [mostrarDialog, setMostrarDialog] = useState(false)
+  const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const toast = useRef(null);
   //--> Buscador
   const [buscador, setBuscador] = useState('')
   //--> Ejecucion en segundo plano
@@ -136,6 +140,17 @@ const CatalogoFlores = () => {
   };
   //--> Modo de vista: lista
   const listItem = (flor) => {
+    const agregarAlCarrito = () => {
+      // Aquí puedes realizar cualquier lógica necesaria al agregar al carrito
+      
+      // Muestra el mensaje de éxito usando el componente Toast
+      toast.current.show({
+        severity: 'success',
+        summary: 'Producto Agregado',
+        detail: `${flor.nombre} ha sido añadido al carrito.`,
+        life: 3000, // Duración en milisegundos
+      });
+    };
     return (
       <div className="col-12">
         <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
@@ -156,7 +171,7 @@ const CatalogoFlores = () => {
             <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2 mt-6">
             
               <Button label="Agregar" icon="pi pi-shopping-cart" className="p-button-rounded"
-                disabled={flor.status === 'agotado'} />
+                disabled={flor.status === 'agotado'} onClick={agregarAlCarrito}/>
               <Button label="Detalles" icon="pi pi-external-link" className="p-button-rounded"
                 onClick={() => dialogoFlor(flor)} />
             </div>
@@ -167,6 +182,17 @@ const CatalogoFlores = () => {
   };
   //--> Modo de vista: grid
   const gridItem = (flor) => {
+    const agregarAlCarrito = () => {
+      // Aquí puedes realizar cualquier lógica necesaria al agregar al carrito
+      
+      // Muestra el mensaje de éxito usando el componente Toast
+      toast.current.show({
+        severity: 'success',
+        summary: 'Producto Agregado',
+        detail: `${flor.nombre} ha sido añadido al carrito.`,
+        life: 3000, // Duración en milisegundos
+      });
+    };
     return (
       <div className="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
         <div className="p-4 border-1 surface-border surface-card border-round">
@@ -186,7 +212,7 @@ const CatalogoFlores = () => {
           <div className="flex align-items-center justify-content-between">
         
             <Button label="Detalles" icon="pi pi-search" className=" font-light ml-2" onClick={() => dialogoFlor(flor)} />
-            <Button label="Agregar" icon="pi pi-shopping-cart" className="font-light ml-2 " disabled={flor.status === 'agotado'}></Button>
+            <Button label="Agregar" icon="pi pi-shopping-cart" className="font-light ml-2 " disabled={flor.status === 'agotado'} onClick={agregarAlCarrito}></Button>
           </div>
         </div>
       </div>
@@ -244,6 +270,12 @@ const CatalogoFlores = () => {
     >
       <div className="grid">
         <div className="col-12">
+        <Toast
+            ref={toast}
+            severity="success"
+            summary="Producto Agregado"
+            detail="El producto ha sido añadido al carrito."
+          />
           <div className="card">
             <h5>Productos Naturales</h5>
             <DataView value={flores} itemTemplate={itemTemplate} layout={layout} header={header()} />

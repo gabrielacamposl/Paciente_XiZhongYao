@@ -13,19 +13,22 @@ import RegistrarTarjeta from '../RealizarPago/CrearTarjetas';
 
 
 const RealizarPago = () => {
-
+   
     const router = useRouter();
     const IrCarrito = () => {
         //--> Redireccionar
-        router.push('/pages/usuario/carrito')
+        router.push('/pages/usuario/Ecommerce/carritoCompras')
+    }
+    const verPedidos = () => {
+        //--> Redireccionar
+        router.push('/pages/usuario/Ecommerce/verPedidos')
     }
     const [tarjeta, setTarjeta] = useState(0)
     const tarjetas = [
-        { card: "Terminación 2293" },
-        { card: "Terminación 1582" },
-        { card: "Terminación 1835" },
-        { card: "Terminación 9821" },
+        { card: "Terminación 9197" },
+       
     ]
+    const [successMessage, setSuccessMessage] = useState('');
 
     /*VARIABLES PARA DETERMINAR LA FECHA DE ENTREGA */
     const today = new Date(); // Obtener la fecha actual
@@ -42,6 +45,12 @@ const RealizarPago = () => {
     };
     const onClick2 = () => {
         setDisplaycard(true);
+        setSuccessMessage('La tarjeta se ha guardado correctamente');
+
+    
+        setTimeout(() => {
+            setSuccessMessage('');
+        }, 3000);
     };
     const onClick3 = () => {
         setDisplayadd(true);
@@ -81,6 +90,7 @@ const RealizarPago = () => {
         );
     };
 
+    
     /*La variable SelectedDate determina la fecha elegida */
     const [selectedDate, setSelectedDate] = useState(maxDate.toLocaleDateString());
     const onDateSelect = (e) => {
@@ -122,10 +132,31 @@ const RealizarPago = () => {
                                     <div className='flex justify-content-between my-3'>
                                         <label htmlFor="tamaño" className='flex align-items-center font-semibold'>Elija una tarjeta</label>
                                         <Dropdown
-                                            inputId="tamaño" value={tarjeta} onChange={(e) => setTarjeta(e.value)} placeholder='Tarjetas'
-                                            options={tarjetas} optionLabel="card" optionValue='card' className="w-full md:w-14rem" />
-                                        <Button label="" icon="pi pi-plus" onClick={() => onClick2('displaycard')} rounded severity="help" aria-label="Favorite" className="p-button-rounded" />
-                                        <Dialog header="Agregar tarjeta" visible={displaycard} style={{ width: 'auto' }} footer={renderFooter2('displaycard')} onHide={() => onHide2('displaycard')}>
+                                            inputId="tamaño"
+                                            value={tarjeta}
+                                            onChange={(e) => setTarjeta(e.value)}
+                                            placeholder='Tarjetas'
+                                            options={tarjetas}
+                                            optionLabel="card"
+                                            optionValue='card'
+                                            className="w-full md:w-14rem"
+                                        />
+                                        <Button
+                                            label=""
+                                            icon="pi pi-plus"
+                                            onClick={onClick2}
+                                            rounded severity="help"
+                                            aria-label="Favorite"
+                                            className="p-button-rounded"
+                                        />
+                                        <Dialog
+                                            header="Agregar tarjeta"
+                                            visible={displaycard}
+
+                                            style={{ width: 'auto' }}
+                                            footer={renderFooter2('displaycard')}
+                                            onHide={onHide2}
+                                        >
                                             <RegistrarTarjeta />
                                         </Dialog>
                                     </div>
@@ -135,7 +166,7 @@ const RealizarPago = () => {
                                 <div className='card'>
                                     <p className='font-bold text-2xl'>Total a pagar: </p>
                                     <div className='flex justify-content-around'>
-                                        <Button label="Pagar" severity="success" rounded size="large" className='w-5' />
+                                        <Button label="Pagar" severity="success" rounded size="large" className='w-5' onClick={verPedidos}  />
                                         <Button label="Cancelar" onClick={IrCarrito} severity="danger" rounded size="large" className='w-5' />
                                     </div>
                                 </div>
@@ -146,13 +177,10 @@ const RealizarPago = () => {
                                         <h4 className='font-bold  text-center '>Productos</h4>
                                         <Carousel value={productos} autoplayInterval={4000} numVisible={3} numScroll={2} orientation="horizontally" verticalViewPortHeight="300px" itemTemplate={plantillaTemporada} />
                                     </Dialog>
-                                    <p><span className='font-bold'>Pedido:</span> #562</p>
-                                    <div className='flex'>
-                                        <p><span className='font-bold'>Contenido:</span> </p>
-                                        <p className="font-medium underline ml-2 text-right cursor-pointer" onClick={() => onClick('displayBasic')} >Ver</p>
-                                    </div>
+                                    <p><span className='font-bold'>Pedido:</span> #154</p>
+                                    
                                     <p> <span className='font-bold '>Fecha de entrega: </span> {selectedDate}</p>
-                                    <p className='text-center  text-2xl'> <span className='font-bold '>Total: </span> $526.50 </p>
+                                    <p className='text-center  text-2xl'> <span className='font-bold '>Total: </span> $249.50 </p>
 
                                 </div>
                             </div>

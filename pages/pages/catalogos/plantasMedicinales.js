@@ -90,7 +90,7 @@ const CatalogoFlores = () => {
         if (toast.current) {
           toast.current.show({
             severity: 'success',
-            summary: 'Se añadió al carrito',
+            summary: 'Se añadió al carrito.',
             detail: carritoadd,
             life: 3000,
           });
@@ -182,6 +182,27 @@ const CatalogoFlores = () => {
     );
   };
 
+  const handleBuscadorChange = (e) => {
+    setBuscador(e.target.value);
+  };
+
+  // Filtrar productos basados en el buscador
+  useEffect(() => {
+    const filtrarProductos = () => {
+      let floresFiltradas = [...plantas];
+      if (buscador) {
+        floresFiltradas = floresFiltradas.filter(
+          (flor) =>
+            flor.nombreProducto.toLowerCase().includes(buscador.toLowerCase()) ||
+            flor.precioProducto.toString().includes(buscador)
+        );
+      }
+      setPlantas(floresFiltradas);
+    };
+
+    filtrarProductos();
+  }, [buscador]);
+
   //--> Cambiar modo de vista
   const itemTemplate = (planta, layout) => {
     if (!planta) { return }
@@ -209,13 +230,23 @@ const CatalogoFlores = () => {
     return (
       <div className="flex justify-content-between">
         <div className="p-inputgroup w-4">
-          {/* <Button icon="pi pi-search" onClick={iniciarBusqueda} />
-          <InputText placeholder="Buscar por categoría o nombre de producto" value={buscador}
-            onChange={e => setBuscador(e.target.value)} />
-          <Button icon="pi pi-times" onClick={limpiarBusqueda} disabled={buscador ? false : true} /> */}
+          <Button icon="pi pi-search" onClick={iniciarBusqueda} />
+          <InputText
+            placeholder="Buscar por nombre o precio"
+            value={buscador}
+            onChange={handleBuscadorChange}
+          />
+          <Button
+            icon="pi pi-times"
+            onClick={limpiarBusqueda}
+            disabled={buscador ? false : true}
+          />
         </div>
 
-        <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
+        <DataViewLayoutOptions
+          layout={layout}
+          onChange={(e) => setLayout(e.value)}
+        />
       </div>
     );
   };
@@ -279,15 +310,15 @@ const CatalogoFlores = () => {
             <h5>Medicina Natural</h5>
             <DataView value={plantas} itemTemplate={itemTemplate} layout={layout} header={header()} />
 
-            <Dialog
-              header={`Detalles de ${detallesPlanta.nombreProducto}`}
-              visible={mostrarDialog} onHide={cerrarDialogo}
-              footer={botonesDialogo} style={{ width: '46vw' }}
-            >
+              <Dialog
+                header={`Detalles de ${detallesPlanta.nombreProducto}`}
+                visible={mostrarDialog} onHide={cerrarDialogo}
+                footer={botonesDialogo} style={{ width: '46vw' }}
+              >
               <div className="flex justify-content-center">
-                <Carousel
-                  value={detallesPlanta.imagenProducto} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions}
-                  itemTemplate={plantillaImagenes} />
+              {/* <Image style={{ borderRadius: '50%' }} src={detallesPlanta.imagenProducto} alt={detallesPlanta.nombreProducto} className="h-10rem w-10rem border-rounded" itemTemplate={plantillaImagenes} /> */}
+                {/* <img
+                  value={detallesPlanta.imagenProducto} itemTemplate={plantillaImagenes} /> */}
               </div>
               <div className="mt-5">
                 <p className="my-2"><span className="font-semibold text-lg">Nombre: </span>{detallesPlanta.nombreProducto}</p>

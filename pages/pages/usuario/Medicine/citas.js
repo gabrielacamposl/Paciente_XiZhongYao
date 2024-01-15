@@ -20,17 +20,17 @@ const Citas = () => {
   const toast = useRef(null);
 
   const datosCitas = [
-    {
-      nombrePaciente: "Dr. Andrés Real Meza",
-      especialidad: "Odontólogo",
-      status: "Cédula Prof. 1483528",
-      imagen: "https://i.pinimg.com/564x/10/49/68/1049687e0a1a7d02a48f17afc9805a0c.jpg",
-      diaCita: "11/01/2024 ",
-      horaCita: "11:30 AM",
-      lugarCita: "Hospital Marcos Juárez, Ciudad de México. CP.54513",
-      maps: "https://maps.app.goo.gl/3RmhCoA4Mpi4XcVw8",
-    },
-    {
+    /*{
+      nombrePaciente: "Dr. Marco Antonio García Olvera",
+      especialidad: "Nefrólogo",
+      status: "50967720",
+      imagen: "https://i.pinimg.com/564x/94/f8/14/94f81441022f70fca9c61aa1ee7b7da8.jpg",
+      lugarCita: "Centro Médico Serenidad, Calle Esperanza, Nº 123,  Colonia Tranquilidad, Edo. Méx.",
+      diaCita: "24/01/24",
+      horaCita: "14:20 PM",
+      maps: "https://maps.app.goo.gl/iznrCk5NRyKYnKsF9"
+    },*/
+   /* {
       nombrePaciente: "Dr. Antonio Dávalos Casas",
       especialidad: "Pediatra",
       status: "Cédula Prof. 11384568",
@@ -48,7 +48,7 @@ const Citas = () => {
       horaCita: "5:00 PM",
       lugarCita: "Hospital ShentiHao 15, Estado de México.",
       maps: "https://maps.app.goo.gl/dzCatb4agSt9W99YA",
-    },
+    },*/
 
   ];
 
@@ -99,7 +99,7 @@ const Citas = () => {
         <div className="col-12 md:col-8 xl:col-10 p-3 justify-content-center">
           <div className="surface-card shadow-2 border-round p-3">
             <div className="flex justify-content-center pt-4">
-              <img src={cita.imagen} className="mx-auto  border-rounded  justify-content-center" alt={cita.nombre} style={{ width: '90px', height: '90px' }} />
+              <img src={cita.imagen} className="mx-auto  border-rounded  justify-content-center" alt={cita.nombre} style={{ width: '110px', height: '90px' }} />
               <br />
             </div>
 
@@ -144,7 +144,7 @@ const Citas = () => {
       <div className="col-12 md:col-8 xl:col-6 p-3">
         <div className="surface-card shadow-2 border-round p-3">
           <div className="flex justify-content-center pt-4">
-            <img src={cita.imagen} className="mx-auto  border-rounded  justify-content-center" alt={cita.nombre} style={{ width: '70px', height: '70px' }} />
+            <img src={cita.imagen} className="mx-auto  border-rounded  justify-content-center" alt={cita.nombre} style={{ width: '110px', height: '80px' }} />
             <br />
           </div>
           <div className=" text-center">
@@ -238,13 +238,6 @@ const Citas = () => {
               footer={cancelarCitaFooter}
               style={{ width: '35vw' }}
             >
-              <div className="mt-5">
-                <p className="my-2"><span className="font-semibold text-lg">Nombre del Doctor: </span>{citaInfo.nombrePaciente}</p>
-                <p className="my-2"><span className="font-semibold text-lg">Especialidad: </span>{citaInfo.especialidad}</p>
-                <p className="my-2"><span className="font-semibold text-lg">Día de la Cita: </span>{citaInfo.diaCita}</p>
-                <p className="my-2"><span className="font-semibold text-lg">Hora de la Cita: </span>{citaInfo.horaCita}</p>
-                <p className="my-2"><span className="font-semibold text-lg">Lugar de la Cita: </span>{citaInfo.lugarCita}</p>
-              </div>
             </Dialog>
             <Toast ref={toast} />
           </div>

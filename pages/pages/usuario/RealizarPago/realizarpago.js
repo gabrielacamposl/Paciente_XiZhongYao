@@ -10,7 +10,7 @@ import 'primeicons/primeicons.css';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import RegistrarTarjeta from '../RealizarPago/CrearTarjetas';
-import RegistrarDir from '../RealizarPago/CrearDir';
+
 import { Toast } from 'primereact/toast';
 import { Image } from 'cloudinary-react'
 import axios from "axios";
@@ -236,14 +236,14 @@ const RealizarPago = () => {
   };
 
 
- /* const productTemplate = (temporada) => {
+ const productTemplate = (temporada) => {
     return (
       <div className=" surface-border border-round m-1 text-center py-5 ">
         <div className="">
           <h5>{temporada.producto_P}</h5>
           {
             <Image
-              cloudName="dp6uo7fsz" publicId={temporada.img_P}
+              cloudName="dluhoni1n" publicId={temporada.img_P}
               className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
               style={{ width: '200px', height: '200px' }}
             />
@@ -257,7 +257,7 @@ const RealizarPago = () => {
         </div>
       </div>
     );
-  };*/
+  };
 
   /*La variable SelectedDate determina la fecha elegida */
   const [selectedDate, setSelectedDate] = useState(formattedMaxDate);
@@ -382,8 +382,6 @@ const RealizarPago = () => {
                 <p> <span className='font-bold '>Fecha de entrega: </span> {selectedDate}</p>
                 <p> <span className='font-bold '>Costo: </span>${costo.toLocaleString()}</p>
                 <p className='text-center  text-2xl'> <span className='font-bold '>Total: </span> ${total.toLocaleString()}</p>
-
-
 
 
               </div>
